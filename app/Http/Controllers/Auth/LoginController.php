@@ -7,18 +7,19 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-
     use AuthenticatesUsers;
     
-    protected function redirectTo()
+    protected function redirectTo(): string
     {
-        if (auth()->user()->role == 'admin') {
-            return '/admin/dashboard';
-        } else if (auth()->user()->role == 'user') {
-            return '/user/dashboard';
-        } else if (auth()->user()->role == 'superadmin') {
-            return '/superadmin/dashboard';
-        }
+        $role = auth()->user()->role;
+
+        $routes = [
+            'admin' => route('admin.dashboard'),
+            'user' => route('user.dashboard'),
+            'superadmin' => route('superadmin.dashboard'),
+        ];
+
+        return $routes[$role] ?? route('home'); 
     }
     
     public function __construct()

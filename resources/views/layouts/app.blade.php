@@ -59,7 +59,7 @@
                     <ul class="navbar-nav me-auto">
                         @if(Auth::user()->role === 'admin')
                             <li class="nav-item">
-                                <a href="{{ route('admin.accounts.index') }}" class="nav-link">
+                                <a href="#" class="nav-link">
                                     Account
                                 </a>
                             </li>
