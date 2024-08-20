@@ -68,6 +68,11 @@
                                     Rank
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('superadmin.office.index') }}" class="nav-link">
+                                    Office
+                                </a>
+                            </li>
                         @endif
                     </ul>
 

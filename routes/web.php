@@ -6,6 +6,7 @@ use App\Http\Controllers\{
     HomeController,
     AccountController,
     RankController,
+    OfficeController,
 };
 
 Route::get('/', function () {
@@ -24,6 +25,7 @@ Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('supe
     // resource
     Route::resource('account', AccountController::class);
     Route::resource('rank', RankController::class);
+    Route::resource('office', OfficeController::class);
 });
 
 // admin middleware
