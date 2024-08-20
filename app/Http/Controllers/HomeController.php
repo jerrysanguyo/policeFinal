@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\User;
-use App\Models\Rank;
-use App\Models\Office;
-use App\Models\Information;
-use App\Services\InformationService;
+use Illuminate\{
+    Http\Request,
+    Support\Facades\Auth,
+};
+use App\{
+    Models\User,
+    Models\Rank,
+    Models\Office,
+    Models\Information,
+};
 
 class HomeController extends Controller
 {
-    protected $informationService;
-
-    public function __construct(InformationService $informationService)
+    public function __construct()
     {
         $this->middleware('auth');
-        $this->informationService = $informationService;
     }
 
     public function index()
