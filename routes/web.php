@@ -7,6 +7,7 @@ use App\Http\Controllers\{
     AccountController,
     RankController,
     OfficeController,
+    InformationController,
 };
 
 Route::get('/', function () {
@@ -21,11 +22,15 @@ Route::get('/registration', [RegisterController::class, 'index'])->name('registr
 // superadmin middleware
 Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('superadmin.')->group(function() 
 {
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [HomeController::class, 'index'])
+        ->name('dashboard');
     // resource
     Route::resource('account', AccountController::class);
     Route::resource('rank', RankController::class);
     Route::resource('office', OfficeController::class);
+    // information
+    Route::post('/information/storeOrUpdate', [InformationController::class, 'storeOrUpdate'])
+        ->name('information.storeOrUpdate');
 });
 
 // admin middleware

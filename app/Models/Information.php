@@ -24,8 +24,8 @@ class Information extends Model
         'last_promotion',
     ];
 
-    public static function getInformation($user_id)
+    public static function getInformation($user)
     {
-        return self::where('user_id', $user_id)->first();
+        return self::where('user_id', $user)->first();
     }
 }
