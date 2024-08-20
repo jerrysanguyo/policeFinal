@@ -45,6 +45,8 @@
             <div class="container">
                 @if(Auth::user()->role === 'admin')
                     <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
+                    @elseif(Auth::user()->role === 'superadmin')
+                    <a class="navbar-brand" href="{{ route('superadmin.dashboard') }}">
                     @else
                     <a class="navbar-brand" href="{{ route('user.dashboard') }}">
                 @endif
@@ -75,7 +77,6 @@
                             </li>
                         @endif
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->

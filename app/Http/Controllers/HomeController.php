@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\{
+    Rank,
+    Office,
+};
 
 class HomeController extends Controller
 {
@@ -13,6 +17,11 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('home');
+        $listOfRank = Rank::getAllRank();
+        $listOfOffice = Office::getAllOffice();
+        return view('home', compact(
+            'listOfRank',
+            'listOfOffice',
+        ));
     }
 }
