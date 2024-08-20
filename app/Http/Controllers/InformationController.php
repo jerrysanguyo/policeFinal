@@ -21,10 +21,11 @@ class InformationController extends Controller
     public function storeOrUpdate(StoreOrUpdateInformationRequest $request)
     {
         $userId = Auth::id();
+        $userRole = Auth::user()->role;
         $data = $request->validated();
         $this->informationService->storeOrUpdateInformation($data, $userId);
 
-        return redirect()->route('superadmin.dashboard')->with(
+        return redirect()->route($userRole . '.dashboard')->with(
             'success', 
             'Information saved successfully!'
         );

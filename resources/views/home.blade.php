@@ -20,6 +20,9 @@
                             </ul>
                         </div>
                     @endif
+                    @php
+                        $baseRoute = Auth::user()->role;
+                    @endphp
                     @include('Form.information')
                 </div>
             </div>

@@ -36,4 +36,20 @@ class User extends Authenticatable
     {
         return self::all();
     }
+    
+    Public function information()
+    {
+        return $this->hasOne(Information::class);
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($user) {
+            if ($user->information) { // Check if there are existing data
+                $user->information->delete();
+            }
+        });
+    }
 }

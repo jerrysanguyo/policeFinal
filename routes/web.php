@@ -37,10 +37,16 @@ Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('supe
 Route::middleware(['auth', 'check.user.role'])->prefix('admin')->name('admin.')->group(function() 
 {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    // Information
+    Route::post('/information/storeOrUpdate', [InformationController::class, 'storeOrUpdate'])
+        ->name('information.storeOrUpdate');
 });
 
 // user middleware
 Route::middleware(['auth', 'check.user.role'])->prefix('user')->name('user.')->group(function() 
 {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard'); 
+    // Information
+    Route::post('/information/storeOrUpdate', [InformationController::class, 'storeOrUpdate'])
+        ->name('information.storeOrUpdate');
 });

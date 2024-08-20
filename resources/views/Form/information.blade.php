@@ -1,4 +1,4 @@
-<form action="{{ route('superadmin.information.storeOrUpdate') }}" method="post">
+<form action="{{ route( $baseRoute . '.information.storeOrUpdate') }}" method="post">
     @csrf
     <div class="row mt-3">
         <div class="col-lg-4 col-md-12">
