@@ -1,11 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container">
-    <span class="fs-3">List accounts</span>
+    <div class="d-flex justify-content-between mb-1">
+        <span class="fs-3">List accounts</span>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createAccount">
+            Create an account
+        </button>
+        @include('account.create')
+    </div>
     <div class="card shadow border">
         <div class="card-body">
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <table class="table table-striped" id="account-table">
                 <thead>
                     <tr>
@@ -28,10 +48,10 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ route('admin.accounts.edit', ['account' => $account->id]) }}" class="dropdown-item">Edit</a>
+                                        <a href="{{ route('superadmin.account.edit', ['account' => $account->id]) }}" class="dropdown-item">Edit</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('admin.accounts.show', ['account' => $account->id]) }}" class="dropdown-item">Details</a>
+                                        <a href="{{ route('superadmin.account.show', ['account' => $account->id]) }}" class="dropdown-item">Details</a>
                                     </li>
                                 </ul>
                             </div>

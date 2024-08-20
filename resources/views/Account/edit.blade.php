@@ -21,7 +21,7 @@
         <div class="col-lg-6">
             <div class="card shadow border">
                 <div class="card-body">
-                    <form action="{{ route('admin.accounts.update', ['account'=>$account->id]) }}" method="post">
+                    <form action="{{ route('superadmin.account.update', ['account'=>$account->id]) }}" method="post">
                         @csrf
                         @method('PUT')
                         <span class="fs-3">Account update</span>
@@ -56,12 +56,30 @@
                                 <input type="password" name="password" id="password" class="form-control">
                             </div>
                         </div>
-                        <input type="submit" value="Update" class="btn btn-primary mt-3">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <label for="role" class="form-label">Role</label>
+                                <select name="role" id="role" class="form-select">
+                                    <option value="admin" {{ $account->role == 'admin' ? 'selected' : '' }}>Admin</option>
+                                    <option value="user" {{ $account->role == 'user' ? 'selected' : '' }}>User</option>
+                                    <option value="superadmin" {{ $account->role == 'superadmin' ? 'selected' : '' }}>Super admin</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-lg-12">
+                                <input type="submit" value="Update" class="btn btn-primary">
+                            </div>
+                        </div>
                     </form>
+                    <a href="{{ route('superadmin.account.index') }}">
+                        <button class="btn btn-secondary mt-2">
+                            Back
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 @endsection

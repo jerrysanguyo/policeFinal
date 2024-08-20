@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     HomeController,
     Auth\RegisterController,
+    AccountController
 };
 
 Route::get('/', function () {
@@ -16,19 +17,21 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Route::get('/registration', [RegisterController::class, 'index'])->name('registration');
 
 // superadmin middleware
-Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->group(function() 
+Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('superadmin.')->group(function() 
 {
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('superadmin.dashboard');
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    // resource
+    Route::resource('account', AccountController::class);
 });
 
 // admin middleware
-Route::middleware(['auth', 'check.user.role'])->prefix('admin')->group(function() 
+Route::middleware(['auth', 'check.user.role'])->prefix('admin')->name('admin.')->group(function() 
 {
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 });
 
 // user middleware
-Route::middleware(['auth', 'check.user.role'])->prefix('user')->group(function() 
+Route::middleware(['auth', 'check.user.role'])->prefix('user')->name('user.')->group(function() 
 {
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('user.dashboard'); 
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard'); 
 });

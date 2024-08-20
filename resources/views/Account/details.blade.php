@@ -3,7 +3,14 @@
 @section('content')
 
 <div class="container-fluid">
-    <span class="fs-3">Account information</span>
+    <div class="d-flex justify-content-between mb-1">
+        <span class="fs-3">Account information</span>
+        <a href="{{ route('superadmin.account.index') }}">
+            <button class="btn btn-secondary mt-2">
+                Back
+            </button>
+        </a>
+    </div>
     <div class="row">
         <div class="col-lg-6">
             <div class="card shadow border">
