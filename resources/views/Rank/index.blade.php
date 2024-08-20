@@ -3,12 +3,12 @@
 @section('content')
 <div class="container">
     <div class="d-flex justify-content-between mb-1">
-        <span class="fs-3">List accounts</span>
+        <span class="fs-3">List ranks</span>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createAccount">
-            Create an account
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createRank">
+            Create a rank
         </button>
-        @include('account.create')
+        @include('rank.create')
     </div>
     <div class="card shadow border">
         <div class="card-body">
@@ -26,21 +26,23 @@
                     </ul>
                 </div>
             @endif
-            <table class="table table-striped" id="account-table">
+            <table class="table table-striped" id="rank-table">
                 <thead>
                     <tr>
-                        <th>Full name</th>
-                        <th>Email</th>
-                        <th>Contact number</th>
+                        <th>Name</th>
+                        <th>Remarks</th>
+                        <th>Created by</th>
+                        <th>Updated by</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($listOfAccount as $account)
+                    @foreach($listOfRanks as $rank)
                     <tr>
-                        <td>{{ $account->first_name }} {{ $account->middle_name }} {{ $account->last_name }}</td>
-                        <td>{{ $account->email }}</td>
-                        <td>{{ $account->mobile_number }}</td>
+                        <td>{{ $rank->name }}</td>
+                        <td>{{ $rank->remarks }}</td>
+                        <td>{{ $rank->createdBy->first_name }}</td>
+                        <td>{{ $rank->updatedBy->first_name }}</td>
                         <td>
                             <div class="dropdown">
                                 <a href="" class="btn btn-primary dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -48,16 +50,16 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ route('superadmin.account.edit', ['account' => $account->id]) }}" class="dropdown-item">Edit</a>
+                                        <a href="{{ route('superadmin.rank.edit', ['rank' => $rank->id]) }}" class="dropdown-item">Edit</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('superadmin.account.show', ['account' => $account->id]) }}" class="dropdown-item">Details</a>
+                                        <a href="{{ route('superadmin.rank.show', ['rank' => $rank->id]) }}" class="dropdown-item">Details</a>
                                     </li>
                                     <li>
-                                        <form action="{{ route('superadmin.account.destroy', ['account' => $account->id]) }}" method="POST" class="d-inline">
+                                        <form action="{{ route('superadmin.rank.destroy', ['rank' => $rank->id]) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure you want to delete this account?')">Delete</button>
+                                            <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure you want to delete this rank?')">Delete</button>
                                         </form>
                                     </li>
                                 </ul>
@@ -73,7 +75,7 @@
 @push('scripts')
     <script>
     $(document).ready(function() {
-        $('#account-table').DataTable({
+        $('#rank-table').DataTable({
             "processing": true,
             "serverSide": false,
             "pageLength": 10,

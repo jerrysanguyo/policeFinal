@@ -56,7 +56,7 @@ class AccountController extends Controller
     {
         $this->accountService->updateUser($account, $request->validated());
 
-        return redirect()->route('superadmin.account.index')
+        return redirect()->route('superadmin.account.edit', $account)
                 ->with('success', 'Account updated successfully!');
     }
     

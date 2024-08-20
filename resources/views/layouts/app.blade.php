@@ -63,6 +63,11 @@
                                     Account
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('superadmin.rank.index') }}" class="nav-link">
+                                    Rank
+                                </a>
+                            </li>
                         @endif
                     </ul>
 

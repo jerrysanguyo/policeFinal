@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
-    HomeController,
     Auth\RegisterController,
-    AccountController
+    HomeController,
+    AccountController,
+    RankController,
 };
 
 Route::get('/', function () {
@@ -22,6 +23,7 @@ Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('supe
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
     // resource
     Route::resource('account', AccountController::class);
+    Route::resource('rank', RankController::class);
 });
 
 // admin middleware

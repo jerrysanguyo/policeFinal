@@ -17,4 +17,19 @@ class Rank extends Model
         'created_by',
         'updated_by',
     ];
+
+    public static function getAllRank()
+    {
+        return self::all();
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updatedBy()
+    {
+        return $this->belongsTo(User::class, 'updated_by');
+    }
 }
