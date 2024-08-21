@@ -11,6 +11,8 @@ use App\{
     Models\Rank,
     Models\Office,
     Models\Information,
+    Models\Program,
+    Models\Course,
 };
 
 class HomeController extends Controller
@@ -25,12 +27,16 @@ class HomeController extends Controller
         $user = Auth::user();
         $listOfRank = Rank::getAllRank();
         $listOfOffice = Office::getAllOffice();
+        $listOfProgram = Program::getAllProgram();
         $userInformation = Information::getInformation($user->id);
+        $userCourse = Course::getCourse($user->id);
         
         return view('home', compact(
             'listOfRank', 
             'listOfOffice', 
             'userInformation', 
+            'listOfProgram',
+            'userCourse',
             'user'
         ));
     }
