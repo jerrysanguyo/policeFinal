@@ -8,6 +8,7 @@ use App\Http\Controllers\{
     RankController,
     OfficeController,
     InformationController,
+    ProgramController,
 };
 
 Route::get('/', function () {
@@ -28,6 +29,7 @@ Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('supe
     Route::resource('account', AccountController::class);
     Route::resource('rank', RankController::class);
     Route::resource('office', OfficeController::class);
+    Route::resource('program', ProgramController::class);
     // information
     Route::post('/information/storeOrUpdate', [InformationController::class, 'storeOrUpdate'])
         ->name('information.storeOrUpdate');

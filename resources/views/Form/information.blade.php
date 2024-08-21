@@ -1,3 +1,4 @@
+<span class="fs-3">General Information:</span>
 <form action="{{ route( $baseRoute . '.information.storeOrUpdate') }}" method="post">
     @csrf
     <div class="row mt-3">

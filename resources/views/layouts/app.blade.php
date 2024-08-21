@@ -75,6 +75,11 @@
                                     Office
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('superadmin.program.index') }}" class="nav-link">
+                                    Program
+                                </a>
+                            </li>
                         @endif
                     </ul>
                     <!-- Right Side Of Navbar -->
