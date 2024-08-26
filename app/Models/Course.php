@@ -22,4 +22,9 @@ class Course extends Model
     {  
         return self::where('user_id', $userId)->first();
     }
+
+    public static function getAllCourse($userId)
+    {
+        return self::where('user_id', $userId)->get();
+    }
 }

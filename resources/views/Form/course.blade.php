@@ -31,13 +31,60 @@
     <div id="additional-sets"></div>
     <div class="row mt-3">
         <div class="col-lg-12 col-md-12">
-            <input type="submit" value="submit" class="btn btn-primary">
+            <div class="d-flex justify-content-between">
+                <input type="submit" value="Submit" class="btn btn-primary">
+                <button type="button" id="add-set" class="btn btn-secondary">Add course/program</button>
+            </div>
         </div>
     </div>
-    <div class="mt-3">
-        <button type="button" id="add-set" class="btn btn-secondary">Add course/program</button>
-    </div>
 </form>
+@if($userCourse)
+    @foreach($listOfCourse as $course)
+        <form action="{{ $baseRoute. '.course.update' }}" method="get">
+            @csrf
+            @METHOD('PUT')
+            <div class="row mt-3">
+                <div class="col-lg-12 col-md-12">
+                    <label for="program" class="form-label">Program:</label>
+                    <select name="program" class="form-select program-select">
+                        <option value="">Select a Program</option>
+                        @foreach($listOfProgram as $program)
+                        <option value="{{ $program->id }}" {{ $course && $course->program_id === $program->id ? 'selected' : '' }}>{{ $program->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <label for="class_number" class="form-label">Class number:</label>
+                    <input type="text" name="class_number" class="form-control" value="{{ $course->class_number }}">
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <label for="duration" class="form-label">Duration of training:</label>
+                    <input type="number" name="duration" class="form-control" value="{{ $course->duration }}">
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <label for="rank" class="form-label">Rank in final order of merit (overall):</label>
+                    <input type="number" name="rank" class="form-control" value="{{ $course->duration }}">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="d-flex justify-content-end">
+                    <input type="submit" value="Update" class="btn btn-primary mx-1">
+        </form>
+        <!-- 
+            - did this to avoid conflict with 2 form.
+            - attached the 2 closing div outside the first form to retain the design of the buttons.
+         -->
+                    <form action="{{ route($baseRoute .'.course.destroy', ['course' => $course->id]) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this course?')">Remove</button>
+                    </form>
+                </div>
+            </div>
+    @endforeach
+@endif
 
 <script>
     function updateProgramOptions() {

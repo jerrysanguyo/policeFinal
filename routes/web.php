@@ -44,6 +44,8 @@ Route::middleware(['auth', 'check.user.role'])->prefix('admin')->name('admin.')-
     // Information
     Route::post('/information/storeOrUpdate', [InformationController::class, 'storeOrUpdate'])
         ->name('information.storeOrUpdate');
+    // Course
+    Route::resource('course', CourseController::class);
 });
 
 // user middleware

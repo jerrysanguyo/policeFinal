@@ -30,6 +30,7 @@ class HomeController extends Controller
         $listOfProgram = Program::getAllProgram();
         $userInformation = Information::getInformation($user->id);
         $userCourse = Course::getCourse($user->id);
+        $listOfCourse = Course::getAllCourse($user->id);
         
         return view('home', compact(
             'listOfRank', 
@@ -37,6 +38,7 @@ class HomeController extends Controller
             'userInformation', 
             'listOfProgram',
             'userCourse',
+            'listOfCourse',
             'user'
         ));
     }

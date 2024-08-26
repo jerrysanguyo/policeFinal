@@ -43,4 +43,15 @@ class CourseController extends Controller
             'Course updated successfully!'
         );
     }
+
+    public function destroy(Course $course)
+    {
+        $userRole = Auth::user()->role;
+        $course->delete();
+
+        return redirect()->route($userRole . '.dashboard')->with(
+            'success',
+            'Course deleted successfully!'
+        );
+    }
 }
