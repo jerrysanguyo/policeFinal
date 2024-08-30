@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
-use App\Http\Requests\StoreOrUpdateCourseRequest;
+use App\Models\{
+    Course,
+    CourseExtension,
+};
+use App\Http\Requests\{
+    StoreOrUpdateCourseRequest,
+    UpdateCourseRequests,
+
+};
 use App\Services\CourseService;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,13 +37,25 @@ class CourseController extends Controller
         );
     }
 
-    public function update(StoreOrUpdateCourseRequest $request, Course $course)
+    public function update(UpdateCourseRequests $request, Course $course)
     {
-        $userId = Auth::id();
         $userRole = Auth::user()->role;
-        $data = $requests->validated();
+        $data = $request->validated();
 
-        $this->courseService->courseUpdate($data, $userId);
+        $this->courseService->courseUpdate($course, $data);
+
+        return redirect()->route($userRole . '.dashboard')->with(
+            'success',
+            'Course updated successfully!'
+        );
+    }
+
+    public function courseExnUpdate(StoreOrUpdateCourseRequest $request, CourseExtension $courseExn)
+    {
+        $userRole = Auth::user()->role;
+        $data = $request->validated();
+
+        $this->courseService->courseExnUpdate($courseExn, $data);
 
         return redirect()->route($userRole . '.dashboard')->with(
             'success',
