@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
             'email' =>  'jsanguyo1624@gmail.com',
             'password' => bcrypt('admin'),
             'mobile_number' => '09271852710',
-            'role' => 'admin',
+            'role' => 'superadmin',
         ]);
     }
 }

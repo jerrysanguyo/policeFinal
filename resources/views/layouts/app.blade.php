@@ -80,6 +80,11 @@
                                     Program
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('superadmin.special.index') }}" class="nav-link">
+                                    Special courses
+                                </a>
+                            </li>
                         @endif
                     </ul>
                     <!-- Right Side Of Navbar -->
