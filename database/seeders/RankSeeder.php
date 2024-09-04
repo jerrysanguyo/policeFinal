@@ -28,7 +28,7 @@ class RankSeeder extends Seeder
         foreach ($ranks as $rank) {
             Rank::create([
                 'name'          =>  $rank,
-                'remarks'       =>  'Seeder Generated',
+                'remarks'       =>  'Seeder generated',
                 'created_by'    =>  1,
                 'updated_by'    =>  1,
             ]);

@@ -13,6 +13,7 @@ use App\{
     Models\Information,
     Models\Program,
     Models\Course,
+    Models\CourseExtension,
 };
 
 class HomeController extends Controller
@@ -31,6 +32,7 @@ class HomeController extends Controller
         $userInformation = Information::getInformation($user->id);
         $userCourse = Course::getCourse($user->id);
         $listOfCourse = Course::getAllCourse($user->id);
+        $userCourseExn = CourseExtension::getCourseExn($user->id);
         
         return view('home', compact(
             'listOfRank', 
@@ -39,6 +41,7 @@ class HomeController extends Controller
             'listOfProgram',
             'userCourse',
             'listOfCourse',
+            'userCourseExn',
             'user'
         ));
     }

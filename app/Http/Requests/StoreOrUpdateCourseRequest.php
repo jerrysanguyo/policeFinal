@@ -13,11 +13,24 @@ class StoreOrUpdateCourseRequest extends FormRequest
 
     public function rules(): array
     {
-        return [
-            'program.*'    => ['numeric', 'exists:programs,id'],
-            'class_number.*'  => ['string', 'required', 'max:255'],
-            'duration.*'      => ['numeric', 'required'],
-            'rank.*'          => ['numeric', 'required'], 
+        $rules = [
+            'program_id.*'          =>  ['numeric', 'exists:programs,id'],
+            'class_number.*'        =>  ['string', 'required', 'max:255'],
+            'duration.*'            =>  ['numeric', 'required'],
+            'ranking.*'             =>  ['numeric', 'required'],
         ];
+    
+        if (!$this->userCourseExn) {
+            $rules = array_merge($rules, [
+                'high_training'     =>  ['numeric', 'exists:programs,id'],
+                'date_graduation'   =>  ['date'],
+                'order_merit'       =>  ['numeric'],
+                'ftoc'              =>  ['string', 'in:yes,no'],
+                'qe_result'         =>  ['string', 'in:passed,failed'],
+                'date_qualifying'   =>  ['date'],
+            ]);
+        }
+    
+        return $rules;
     }
 }

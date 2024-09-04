@@ -31,7 +31,10 @@ Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('supe
     Route::resource('rank', RankController::class);
     Route::resource('office', OfficeController::class);
     Route::resource('program', ProgramController::class);
+    // course & course Extension
     Route::resource('course', CourseController::class);
+    Route::get('/course-extension/{courseExn}', [CourseController::class, 'courseExnUpdate'])
+        ->name('courseExn.update');
     // information
     Route::post('/information/storeOrUpdate', [InformationController::class, 'storeOrUpdate'])
         ->name('information.storeOrUpdate');

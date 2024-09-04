@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
     {
         User::factory()->create([
             'first_name' => 'Jerry',
-            'middle_name' => 'Gonzaga',
+            'middle_name' => 'Gonzaga', 
             'last_name' => 'Sanguyo',
             'email' =>  'jsanguyo1624@gmail.com',
             'password' => bcrypt('admin'),
