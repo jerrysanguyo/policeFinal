@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\SpecielCourseExtension;
+use App\Models\SpecialCourseExtension;
 
-class SpecialCourseExtension extends Seeder
+class SpecialCourseExtensionSeeder extends Seeder
 {
     public function run(): void
     {
@@ -95,7 +95,7 @@ class SpecialCourseExtension extends Seeder
 
         foreach ($specialExn as $category => $courseList) {
             foreach ($courseList as $course) {
-                SpecielCourseExtension::create([
+                SpecialCourseExtension::create([
                     'special_id'    =>  $category,
                     'name'          =>  $course,
                     'remarks'       =>  'Seeder generated',

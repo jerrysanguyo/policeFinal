@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
             ProgramSeeder::class, 
             RankSeeder::class,
             SpecialCourseSeeder::class,
-            SpecialCourseExtension::class,
+            SpecialCourseExtensionSeeder::class,
         ]);
     }
 }
