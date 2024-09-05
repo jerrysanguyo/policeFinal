@@ -23,6 +23,11 @@ class SpecialCourseExtension extends Model
         return self::all();
     }
 
+    public function special()
+    {
+        return $this->belongsto(SpecialCourse::class, 'special_id');
+    }
+
     public function createdBy()
     {
         return $this->belongsTo(User::class, 'created_by');

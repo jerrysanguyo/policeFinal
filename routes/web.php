@@ -11,6 +11,7 @@ use App\Http\Controllers\{
     ProgramController,
     CourseController,
     SpecialCourseController,
+    SpecialCourseExtnController,
 };
 
 Route::get('/', function () {
@@ -33,6 +34,7 @@ Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('supe
     Route::resource('office', OfficeController::class);
     Route::resource('program', ProgramController::class);
     Route::resource('special', SpecialCourseController::class);
+    Route::resource('specialExtn', SpecialCourseExtnController::class);
     // course & course Extension
     Route::resource('course', CourseController::class);
     Route::get('/course-extension/{courseExn}', [CourseController::class, 'courseExnUpdate'])

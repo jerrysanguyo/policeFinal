@@ -80,10 +80,14 @@
                                     Program
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="{{ route('superadmin.special.index') }}" class="nav-link">
-                                    Special course
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Special Course
                                 </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ route('superadmin.special.index') }}">Special course (Main)</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('superadmin.specialExtn.index') }}">Special course (Extension)</a></li>
+                                </ul>
                             </li>
                         @endif
                     </ul>
