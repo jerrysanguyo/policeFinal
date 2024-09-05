@@ -82,7 +82,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('superadmin.special.index') }}" class="nav-link">
-                                    Special courses
+                                    Special course
                                 </a>
                             </li>
                         @endif
