@@ -22,7 +22,7 @@ Auth::routes();
 
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 Route::get('/registration', [RegisterController::class, 'index'])->name('registration');
-
+Route::get('get-special-extension/{specialId}', [SpecialTrainingController::class, 'getSpecialExn'])->name('special.exntension');
 // superadmin middleware
 Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('superadmin.')->group(function() 
 {

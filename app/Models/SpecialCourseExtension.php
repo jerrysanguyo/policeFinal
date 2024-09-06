@@ -23,6 +23,11 @@ class SpecialCourseExtension extends Model
         return self::all();
     }
 
+    public static function getSpecialExtn($specialId)
+    {
+        return self::where('special_id', $specialId)->get();
+    }
+
     public function special()
     {
         return $this->belongsto(SpecialCourse::class, 'special_id');

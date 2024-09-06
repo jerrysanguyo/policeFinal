@@ -50,7 +50,7 @@
                     @else
                     <a class="navbar-brand" href="{{ route('user.dashboard') }}">
                 @endif
-                    {{ config('app.name', 'Laravel') }}
+                    <img src="{{ asset('image/police_logo.webp') }}" class="float-end" alt="police logo" style="width:25%">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

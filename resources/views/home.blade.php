@@ -23,8 +23,7 @@
                     @php
                         $baseRoute = Auth::user()->role;
                     @endphp
-                    <!-- @include('Form.information') -->
-                    <!-- @include('Form.course') -->
+                    @include('form.training')
                 </div>
             </div>
         </div>

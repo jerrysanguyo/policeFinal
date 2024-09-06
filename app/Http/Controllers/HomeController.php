@@ -14,6 +14,9 @@ use App\{
     Models\Program,
     Models\Course,
     Models\CourseExtension,
+    Models\SpecialTraning,
+    Models\SpecialCourse,
+    Models\SpecialCourseExtension,
 };
 
 class HomeController extends Controller
@@ -29,6 +32,8 @@ class HomeController extends Controller
         $listOfRank = Rank::getAllRank();
         $listOfOffice = Office::getAllOffice();
         $listOfProgram = Program::getAllProgram();
+        $listOfSpecialCourse = SpecialCourse::getAllSpecial();
+        $listOfSpecialExn = SpecialCourseExtension::getAllSpecialExn();
         $userInformation = Information::getInformation($user->id);
         $userCourse = Course::getCourse($user->id);
         $listOfCourse = Course::getAllCourse($user->id);
@@ -42,6 +47,8 @@ class HomeController extends Controller
             'userCourse',
             'listOfCourse',
             'userCourseExn',
+            'listOfSpecialCourse',
+            'listOfSpecialExn',
             'user'
         ));
     }
