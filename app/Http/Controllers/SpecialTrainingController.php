@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\{
     Models\SpecialTraining,
+    Models\SpecialCourse,
+    Models\SpecialCourseExtension,
     Http\Requests\StoreOrUpdateSpecialTrainingRequests,
     Services\SpecialTrainingService,
     DataTables\UniversalDataTable,
@@ -19,11 +21,10 @@ class SpecialTrainingController extends Controller
         $this->specialTrainingService = $specialTrainingService;
     }
 
-    public function getSpecialExn($specialId)
+    public function getAdminTrainings($courseId)
     {
-        $extension = SpecialCourseExtension::getSpecialExtn($specialId);
-
-        return response()->json($extension);
+        $trainings = SpecialCourseExtension::getSpecialExtn($courseId);
+        return response()->json($trainings);
     }
 
     public function index()

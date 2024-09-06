@@ -23,14 +23,14 @@ class SpecialCourseExtension extends Model
         return self::all();
     }
 
-    public static function getSpecialExtn($specialId)
+    public static function getSpecialExtn($courseId)
     {
-        return self::where('special_id', $specialId)->get();
+        return self::where('special_id', $courseId)->get(['id', 'name']);
     }
 
     public function special()
     {
-        return $this->belongsto(SpecialCourse::class, 'special_id');
+        return $this->belongsTo(SpecialCourse::class, 'special_id');
     }
 
     public function createdBy()

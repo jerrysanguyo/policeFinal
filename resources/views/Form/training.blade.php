@@ -5,6 +5,7 @@
         <div class="col-lg-6 col-md-12">
             <label for="admin_course" class="form-label">Admin training course:</label>
             <select name="admin_course" id="admin_course" class="form-select">
+                <option value="">Choose ..</option>
                 @foreach($listOfSpecialCourse as $course)
                     <option value="{{ $course->id }}">{{ $course->name }}</option>
                 @endforeach
@@ -38,33 +39,30 @@
     <input type="submit" value="Submit" class="btn btn-primary mt-3">
 </form>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const adminSelect = document.getElementById('admin_course');
-        const trainingSelect = document.getElementById('admin_training');
+    document.addEventListener('DOMContentLoaded', () => {
+        const adminCourseSelect = document.getElementById('admin_course');
+        const adminTrainingSelect = document.getElementById('admin_training');
 
-        function fetchTrainning() {
-            fetch(`get-special-extension/${specialId}`)
-                .then(response => response.json())
-                .then(data => {
-                    trainingSelect.innerHTML = '';
-                    data.forEach(training => {
+        adminCourseSelect.addEventListener('change', async function () {
+            const courseId = this.value;
+            adminTrainingSelect.innerHTML = '<option value="">Choose ..</option>';
+
+            if (courseId) {
+                try {
+                    const response = await fetch(`/admin-trainings/${courseId}`);
+                    const trainings = await response.json();
+
+                    trainings.forEach(training => {
                         const option = document.createElement('option');
                         option.value = training.id;
                         option.textContent = training.name;
-                        if (selectedTrainingId && training.id == selectedTrainingId) {
-                            option.selected = true;
-                        }
-                        trainingSelect.appendChild(option);
+                        adminTrainingSelect.appendChild(option);
                     });
-                })
-                .catch(error => console.error('Error fethcing admin course extn:', error));
-        }
-
-        adminSelect.addEventListener('change', function() {
-            const selectedSpecialId = this.value;
-            fetchTrainning(this.value);
+                } catch (error) {
+                    console.error('Error fetching trainings:', error);
+                    alert('There was an error fetching the trainings.');
+                }
+            }
         });
-
-        // for update use isset
     });
 </script>
