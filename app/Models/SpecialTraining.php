@@ -12,19 +12,30 @@ class SpecialTraining extends Model
     protected $table = 'special_trainings';
     protected $fillable = [
         'user_id',
+        'admin_course',
         'admin_training',
         'class_number',
         'duration',
         'height',
     ];
 
-    public static function getSpecialTraining($userId)
+    public static function getTraining($userId)
     {  
         return self::where('user_id', $userId)->first();
     }
     
-    public static function getAllSpecialTraining($userId)
+    public static function getAllTraining($userId)
     {
         return self::where('user_id', $userId)->get();
+    }
+
+    public function course()
+    {
+        return $this->belongsTo(SpecialCourse::class, 'admin_course');
+    }
+
+    public function training()
+    {
+        return $this->belongsTo(SpecialCourseExtension::class, 'admin_training');
     }
 }

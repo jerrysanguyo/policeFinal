@@ -6,11 +6,11 @@ use App\{
     Models\SpecialTraining,
     Models\SpecialCourse,
     Models\SpecialCourseExtension,
-    Http\Requests\StoreOrUpdateSpecialTrainingRequests,
+    Http\Requests\StoreOrUpdateSpecialTrainingRequest,
     Services\SpecialTrainingService,
     DataTables\UniversalDataTable,
 };
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SpecialTrainingController extends Controller
 {
@@ -27,38 +27,16 @@ class SpecialTrainingController extends Controller
         return response()->json($trainings);
     }
 
-    public function index()
+    public function storeOrUpdate(StoreOrUpdateSpecialTrainingRequest $request)
     {
-        //
-    }
+        $userId = Auth::id();
+        $userRole = Auth::user()->role;
+        $data = $request->validated();
+        $this->specialTrainingService->storeOrUpdateSpecialTraining($data, $userId);
 
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-    
-    public function show(SpecialTraining $specialTraining)
-    {
-        //
-    }
-    
-    public function edit(SpecialTraining $specialTraining)
-    {
-        //
-    }
-    
-    public function update(Request $request, SpecialTraining $specialTraining)
-    {
-        //
-    }
-    
-    public function destroy(SpecialTraining $specialTraining)
-    {
-        //
+        return redirect()->route($userRole . '.dashboard')->with(
+            'success', 
+            'Information saved successfully!'
+        );
     }
 }

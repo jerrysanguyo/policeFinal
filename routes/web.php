@@ -43,6 +43,9 @@ Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('supe
     // information
     Route::post('/information/storeOrUpdate', [InformationController::class, 'storeOrUpdate'])
         ->name('information.storeOrUpdate');
+    //training
+    Route::post('training/storeOrUpdate', [SpecialTrainingController::class, 'storeOrUpdate'])
+        ->name('training.storeOrUpdate');
 });
 
 // admin middleware

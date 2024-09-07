@@ -14,7 +14,7 @@ use App\{
     Models\Program,
     Models\Course,
     Models\CourseExtension,
-    Models\SpecialTraning,
+    Models\SpecialTraining,
     Models\SpecialCourse,
     Models\SpecialCourseExtension,
 };
@@ -28,28 +28,37 @@ class HomeController extends Controller
 
     public function index()
     {
+        // Auth to get user Id
         $user = Auth::user();
+        // options in select
         $listOfRank = Rank::getAllRank();
         $listOfOffice = Office::getAllOffice();
         $listOfProgram = Program::getAllProgram();
         $listOfSpecialCourse = SpecialCourse::getAllSpecial();
         $listOfSpecialExn = SpecialCourseExtension::getAllSpecialExn();
+        // data fetched per user
+        // ---------------------
+        // information
         $userInformation = Information::getInformation($user->id);
+        // course
         $userCourse = Course::getCourse($user->id);
         $listOfCourse = Course::getAllCourse($user->id);
         $userCourseExn = CourseExtension::getCourseExn($user->id);
+        // training
+        $userTraining = SpecialTraining::getTraining($user->id);
         
         return view('home', compact(
+            'user',
             'listOfRank', 
-            'listOfOffice', 
+            'listOfOffice',
+            'listOfProgram', 
+            'listOfSpecialCourse',
+            'listOfSpecialExn',
             'userInformation', 
-            'listOfProgram',
             'userCourse',
             'listOfCourse',
             'userCourseExn',
-            'listOfSpecialCourse',
-            'listOfSpecialExn',
-            'user'
+            'userTraining',
         ));
     }
 }

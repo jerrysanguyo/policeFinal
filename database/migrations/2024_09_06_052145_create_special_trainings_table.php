@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('special_trainings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('admin_course')->constrained('special_courses');
             $table->foreignId('admin_training')->constrained('special_course_extensions');
             $table->string('class_number');
             $table->integer('duration');

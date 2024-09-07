@@ -47,14 +47,20 @@ class User extends Authenticatable
         return $this->hasMany(Course::class);
     }
 
+    public function special()
+    {
+        return $this->hasOne(SpecialTraining::class);
+    }
+
     public static function boot()
     {
         parent::boot();
 
         static::deleting(function ($user) {
-            if ($user->information || $user->course) { // Check if there are existing data
+            if ($user->information || $user->course || $user->special) {
                 $user->information->delete();
                 $user->course->delete();
+                $user->special->delete();
             }
         });
     }

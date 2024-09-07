@@ -25,7 +25,7 @@ class SpecialCourseExtension extends Model
 
     public static function getSpecialExtn($courseId)
     {
-        return self::where('special_id', $courseId)->get(['id', 'name']);
+        return self::where('special_id', $courseId)->get();
     }
 
     public function special()
