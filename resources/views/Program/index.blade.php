@@ -50,8 +50,9 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ route('superadmin.program.edit', ['program' => $program->id]) }}" class="dropdown-item">Edit</a>
+                                        <a href="{{ route($userRole . '.program.edit', ['program' => $program->id]) }}" class="dropdown-item">Edit</a>
                                     </li>
+                                    @if(Auth::user()->role === 'superadmin')
                                     <li>
                                         <form action="{{ route('superadmin.program.destroy', ['program' => $program->id]) }}" method="POST" class="d-inline">
                                             @csrf
@@ -59,6 +60,7 @@
                                             <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure you want to delete this program?')">Delete</button>
                                         </form>
                                     </li>
+                                    @endif
                                 </ul>
                             </div>
                         </td>

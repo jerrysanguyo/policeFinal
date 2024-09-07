@@ -9,6 +9,7 @@ use App\{
     Services\OfficeService,
     DataTables\UniversalDataTable,
 };
+use Illuminate\Support\Facades\Auth;
 
 class OfficeController extends Controller
 {
@@ -30,9 +31,10 @@ class OfficeController extends Controller
     
     public function store(StoreOfficeRequest $request)
     {
+        $userRole = Auth::user()->role;
         $this->officeService->officeStore($request->validated());
 
-        return redirect()->route('superadmin.office.index')->with(
+        return redirect()->route($userRole . '.office.index')->with(
             'success',
             'Office added successfully!'
         );
@@ -47,9 +49,10 @@ class OfficeController extends Controller
     
     public function update(UpdateOfficeRequest $request, Office $office)
     {
+        $userRole = Auth::user()->role;
         $this->officeService->officeUpdate($office, $request->validated());
 
-        return redirect()->route('superadmin.office.edit', $office)->with(
+        return redirect()->route($userRole . '.office.edit', $office)->with(
             'success',
             'Office updated successfully!'
         );

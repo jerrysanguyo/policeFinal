@@ -21,7 +21,7 @@
         <div class="col-lg-6">
             <div class="card shadow border">
                 <div class="card-body">
-                    <form action="{{ route('superadmin.specialExtn.update', ['specialExtn'=>$specialExtn->id]) }}" method="post">
+                    <form action="{{ route($userRole . '.specialExtn.update', ['specialExtn'=>$specialExtn->id]) }}" method="post">
                         @csrf
                         @method('PUT')
                         <span class="fs-3">Special course extension update</span>
@@ -54,7 +54,7 @@
                             </div>
                         </div>
                     </form>
-                    <a href="{{ route('superadmin.specialExtn.index') }}">
+                    <a href="{{ route($userRole . '.specialExtn.index') }}">
                         <button class="btn btn-secondary mt-2">
                             Back
                         </button>

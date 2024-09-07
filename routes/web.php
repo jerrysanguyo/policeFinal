@@ -52,18 +52,40 @@ Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('supe
 Route::middleware(['auth', 'check.user.role'])->prefix('admin')->name('admin.')->group(function() 
 {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    // resource
+    Route::resource('account', AccountController::class);
+    Route::resource('rank', RankController::class);
+    Route::resource('office', OfficeController::class);
+    Route::resource('program', ProgramController::class);
+    Route::resource('special', SpecialCourseController::class);
+    Route::resource('specialExtn', SpecialCourseExtnController::class);
     // Information
     Route::post('/information/storeOrUpdate', [InformationController::class, 'storeOrUpdate'])
         ->name('information.storeOrUpdate');
-    // Course
+    // course & course Extension
     Route::resource('course', CourseController::class);
+    Route::get('/course-extension/{courseExn}', [CourseController::class, 'courseExnUpdate'])
+        ->name('courseExn.update');
+    // information
+    Route::post('/information/storeOrUpdate', [InformationController::class, 'storeOrUpdate'])
+        ->name('information.storeOrUpdate');
+    //training
+    Route::post('training/storeOrUpdate', [SpecialTrainingController::class, 'storeOrUpdate'])
+        ->name('training.storeOrUpdate');
 });
 
 // user middleware
 Route::middleware(['auth', 'check.user.role'])->prefix('user')->name('user.')->group(function() 
 {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard'); 
-    // Information
+    // course & course Extension
+    Route::resource('course', CourseController::class);
+    Route::get('/course-extension/{courseExn}', [CourseController::class, 'courseExnUpdate'])
+        ->name('courseExn.update');
+    // information
     Route::post('/information/storeOrUpdate', [InformationController::class, 'storeOrUpdate'])
         ->name('information.storeOrUpdate');
+    //training
+    Route::post('training/storeOrUpdate', [SpecialTrainingController::class, 'storeOrUpdate'])
+        ->name('training.storeOrUpdate');
 });

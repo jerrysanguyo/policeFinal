@@ -9,6 +9,7 @@ use App\{
     DataTables\UniversalDatatable,
     Services\AccountService,
 };
+use Illuminate\Support\Facades\Auth;
 
 class AccountController extends Controller
 {
@@ -34,9 +35,10 @@ class AccountController extends Controller
     
     public function store(StoreUserRequest $request)
     {
+        $userRole = Auth::user()->role;
         $this->accountService->registerUser($request->validated());
 
-        return redirect()->route('superadmin.account.index')
+        return redirect()->route($userRole . '.account.index')
                 ->with('success', 'Account registered successfully!');
     }
     
@@ -54,9 +56,10 @@ class AccountController extends Controller
 
     public function update(UpdateUserRequest $request, User $account)
     {
+        $userRole = Auth::user()->role;
         $this->accountService->updateUser($account, $request->validated());
 
-        return redirect()->route('superadmin.account.edit', $account)
+        return redirect()->route($userRole . '.account.edit', $account)
                 ->with('success', 'Account updated successfully!');
     }
     

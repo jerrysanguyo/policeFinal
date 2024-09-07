@@ -21,7 +21,7 @@
         <div class="col-lg-6">
             <div class="card shadow border">
                 <div class="card-body">
-                    <form action="{{ route('superadmin.office.update', ['office'=>$office->id]) }}" method="post">
+                    <form action="{{ route($userRole . '.office.update', ['office'=>$office->id]) }}" method="post">
                         @csrf
                         @method('PUT')
                         <span class="fs-3">office update</span>

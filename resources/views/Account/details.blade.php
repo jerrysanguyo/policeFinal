@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <div class="d-flex justify-content-between mb-1">
         <span class="fs-3">Account information</span>
-        <a href="{{ route('superadmin.account.index') }}">
+        <a href="{{ route($userRole . '.account.index') }}">
             <button class="btn btn-secondary mt-2">
                 Back
             </button>

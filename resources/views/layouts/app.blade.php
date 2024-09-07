@@ -59,24 +59,27 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        @if(Auth::user()->role === 'superadmin')
+                        @if(Auth::user()->role === 'superadmin' || Auth::user()->role === 'admin')
+                            @php
+                                $userRole = Auth::user()->role;
+                            @endphp
                             <li class="nav-item">
-                                <a href="{{ route('superadmin.account.index') }}" class="nav-link">
+                                <a href="{{ route($userRole . '.account.index') }}" class="nav-link">
                                     Account
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('superadmin.rank.index') }}" class="nav-link">
+                                <a href="{{ route($userRole . '.rank.index') }}" class="nav-link">
                                     Rank
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('superadmin.office.index') }}" class="nav-link">
+                                <a href="{{ route($userRole . '.office.index') }}" class="nav-link">
                                     Office
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('superadmin.program.index') }}" class="nav-link">
+                                <a href="{{ route($userRole . '.program.index') }}" class="nav-link">
                                     Program
                                 </a>
                             </li>
@@ -85,8 +88,8 @@
                                     Special Course
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ route('superadmin.special.index') }}">Special course (Main)</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('superadmin.specialExtn.index') }}">Special course (Extension)</a></li>
+                                    <li><a class="dropdown-item" href="{{ route($userRole . '.special.index') }}">Special course (Main)</a></li>
+                                    <li><a class="dropdown-item" href="{{ route($userRole . '.specialExtn.index') }}">Special course (Extension)</a></li>
                                 </ul>
                             </li>
                         @endif

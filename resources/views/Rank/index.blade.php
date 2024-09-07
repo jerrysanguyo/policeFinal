@@ -50,11 +50,9 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ route('superadmin.rank.edit', ['rank' => $rank->id]) }}" class="dropdown-item">Edit</a>
+                                        <a href="{{ route($userRole . '.rank.edit', ['rank' => $rank->id]) }}" class="dropdown-item">Edit</a>
                                     </li>
-                                    <li>
-                                        <a href="{{ route('superadmin.rank.show', ['rank' => $rank->id]) }}" class="dropdown-item">Details</a>
-                                    </li>
+                                    @if(Auth::user()->role === 'superadmin')
                                     <li>
                                         <form action="{{ route('superadmin.rank.destroy', ['rank' => $rank->id]) }}" method="POST" class="d-inline">
                                             @csrf
@@ -62,6 +60,7 @@
                                             <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure you want to delete this rank?')">Delete</button>
                                         </form>
                                     </li>
+                                    @endif
                                 </ul>
                             </div>
                         </td>

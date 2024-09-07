@@ -21,7 +21,7 @@
         <div class="col-lg-6">
             <div class="card shadow border">
                 <div class="card-body">
-                    <form action="{{ route('superadmin.account.update', ['account'=>$account->id]) }}" method="post">
+                    <form action="{{ route($userRole . '.account.update', ['account'=>$account->id]) }}" method="post">
                         @csrf
                         @method('PUT')
                         <span class="fs-3">Account update</span>
@@ -62,7 +62,9 @@
                                 <select name="role" id="role" class="form-select">
                                     <option value="admin" {{ $account->role == 'admin' ? 'selected' : '' }}>Admin</option>
                                     <option value="user" {{ $account->role == 'user' ? 'selected' : '' }}>User</option>
-                                    <option value="superadmin" {{ $account->role == 'superadmin' ? 'selected' : '' }}>Super admin</option>
+                                    @if(Auth::user()->role === 'superadmin')
+                                        <option value="superadmin" {{ $account->role == 'superadmin' ? 'selected' : '' }}>Super admin</option>
+                                    @endif
                                 </select>
                             </div>
                         </div>
@@ -72,7 +74,7 @@
                             </div>
                         </div>
                     </form>
-                    <a href="{{ route('superadmin.account.index') }}">
+                    <a href="{{ route($userRole . '.account.index') }}">
                         <button class="btn btn-secondary mt-2">
                             Back
                         </button>

@@ -48,11 +48,12 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ route('superadmin.account.edit', ['account' => $account->id]) }}" class="dropdown-item">Edit</a>
+                                        <a href="{{ route($userRole . '.account.edit', ['account' => $account->id]) }}" class="dropdown-item">Edit</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('superadmin.account.show', ['account' => $account->id]) }}" class="dropdown-item">Details</a>
+                                        <a href="{{ route($userRole . '.account.show', ['account' => $account->id]) }}" class="dropdown-item">Details</a>
                                     </li>
+                                    @if(Auth::user()->role === 'superadmin')
                                     <li>
                                         <form action="{{ route('superadmin.account.destroy', ['account' => $account->id]) }}" method="POST" class="d-inline">
                                             @csrf
@@ -60,6 +61,7 @@
                                             <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure you want to delete this account?')">Delete</button>
                                         </form>
                                     </li>
+                                    @endif
                                 </ul>
                             </div>
                         </td>

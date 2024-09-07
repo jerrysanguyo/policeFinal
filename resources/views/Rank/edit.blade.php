@@ -21,7 +21,7 @@
         <div class="col-lg-6">
             <div class="card shadow border">
                 <div class="card-body">
-                    <form action="{{ route('superadmin.rank.update', ['rank'=>$rank->id]) }}" method="post">
+                    <form action="{{ route($userRole . '.rank.update', ['rank'=>$rank->id]) }}" method="post">
                         @csrf
                         @method('PUT')
                         <span class="fs-3">Rank update</span>
@@ -44,7 +44,7 @@
                             </div>
                         </div>
                     </form>
-                    <a href="{{ route('superadmin.rank.index') }}">
+                    <a href="{{ route($userRole . '.rank.index') }}">
                         <button class="btn btn-secondary mt-2">
                             Back
                         </button>

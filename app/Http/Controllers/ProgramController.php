@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProgramRequest;
 use App\Http\Requests\UpdateProgramRequest;
 use App\DataTables\UniversalDataTable;
 use App\Services\ProgramService;
+use Illuminate\Support\Facades\Auth;
 
 class ProgramController extends Controller
 {
@@ -28,9 +29,10 @@ class ProgramController extends Controller
     
     public function store(StoreProgramRequest $request)
     {
+        $userRole = Auth::user()->role;
         $this->programService->programStore($request->validated());
         
-        return redirect()->route('superadmin.program.index')->with(
+        return redirect()->route($userRole. '.program.index')->with(
             'success',
             'Program added successfully!'
         );
@@ -45,9 +47,10 @@ class ProgramController extends Controller
     
     public function update(UpdateProgramRequest $request, Program $program)
     {
+        $userRole = Auth::user()->role;
         $this->programService->programUpdate($program, $request->validated());
 
-        return redirect()->route('superadmin.program.edit', $program)->with(
+        return redirect()->route($userRole . '.program.edit', $program)->with(
             'success',
             'Program updated successfully!'
         );

@@ -21,7 +21,7 @@
         <div class="col-lg-6">
             <div class="card shadow border">
                 <div class="card-body">
-                    <form action="{{ route('superadmin.special.update', ['special'=>$special->id]) }}" method="post">
+                    <form action="{{ route($userRole . '.special.update', ['special'=>$special->id]) }}" method="post">
                         @csrf
                         @method('PUT')
                         <span class="fs-3">special update</span>
@@ -44,7 +44,7 @@
                             </div>
                         </div>
                     </form>
-                    <a href="{{ route('superadmin.special.index') }}">
+                    <a href="{{ route($userRole . '.special.index') }}">
                         <button class="btn btn-secondary mt-2">
                             Back
                         </button>

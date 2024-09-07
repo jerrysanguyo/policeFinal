@@ -9,6 +9,7 @@ use App\{
     DataTables\UniversalDataTable,
     Services\SpecialCourseExtnService,
 };
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class SpecialCourseExtnController extends Controller
@@ -33,9 +34,10 @@ class SpecialCourseExtnController extends Controller
     
     public function store(StoreOrUpdateSpecialCourseExtnRequest $request)
     {
+        $userRole = Auth::user()->role;
         $this->specialCourseExtnService->specialCourseExtnStore($request->validated());
 
-        return redirect()->route('superadmin.specialExtn.index')->with(
+        return redirect()->route($userRole . '.specialExtn.index')->with(
             'success',
             'Special course extension added successfully!'
         );
@@ -53,9 +55,10 @@ class SpecialCourseExtnController extends Controller
 
     public function update(StoreOrUpdateSpecialCourseExtnRequest $request, SpecialCourseExtension $specialExtn)
     {
+        $userRole = Auth::user()->role;
         $this->specialCourseExtnService->specialCourseExtnUpdate($specialExtn, $request->validated());
 
-        return redirect()->route('superadmin.specialExtn.edit', $specialExtn)->with(
+        return redirect()->route($userRole . '.specialExtn.edit', $specialExtn)->with(
             'success',
             'Special course extension added successfully!'
         );

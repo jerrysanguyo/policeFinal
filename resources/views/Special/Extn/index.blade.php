@@ -52,8 +52,9 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ route('superadmin.specialExtn.edit', ['specialExtn' => $specialExtn->id]) }}" class="dropdown-item">Edit</a>
+                                        <a href="{{ route($userRole . '.specialExtn.edit', ['specialExtn' => $specialExtn->id]) }}" class="dropdown-item">Edit</a>
                                     </li>
+                                    @if(Auth::user()->role === 'superadmin')
                                     <li>
                                         <form action="{{ route('superadmin.specialExtn.destroy', ['specialExtn' => $specialExtn->id]) }}" method="POST" class="d-inline">
                                             @csrf
@@ -61,6 +62,7 @@
                                             <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure you want to delete this specialExtn?')">Delete</button>
                                         </form>
                                     </li>
+                                    @endif
                                 </ul>
                             </div>
                         </td>

@@ -8,7 +8,7 @@ use App\{
     DataTables\UniversalDataTable,
     Http\Requests\StoreOrUpdateSpecialCourseRequest,
 };
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class SpecialCourseController extends Controller
@@ -24,14 +24,17 @@ class SpecialCourseController extends Controller
     {
         $listOfSpecialCourse = SpecialCourse::getAllSpecial();
 
-        return $dataTable->render('special.index', compact('listOfSpecialCourse'));
+        return $dataTable->render('special.index', compact(
+            'listOfSpecialCourse'
+        ));
     }
     
     public function store(StoreOrUpdateSpecialCourseRequest $request)
     {
+        $userRole = Auth::user()->role;
         $this->specialCourseService->specialCourseStore($request->validated());
 
-        return redirect()->route('superadmin.special.index')->with(
+        return redirect()->route($userRole . '.special.index')->with(
             'success',
             'Special course added successfully!'
         );
@@ -44,9 +47,10 @@ class SpecialCourseController extends Controller
     
     public function update(StoreOrUpdateSpecialCourseRequest $request, SpecialCourse $special)
     {
+        $userRole = Auth::user()->role;
         $this->specialCourseService->specialCourseUpdate($special, $request->validated());
 
-        return redirect()->route('superadmin.special.edit', $special)->with(
+        return redirect()->route($userRole . '.special.edit', $special)->with(
             'success',
             'Special course updated successfully!'
         );

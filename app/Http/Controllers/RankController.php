@@ -9,6 +9,7 @@ use App\{
     Datatables\UniversalDataTable,
     Services\RankService,
 };
+use Illuminate\Support\Facades\Auth;
 
 class RankController extends Controller
 {
@@ -30,9 +31,10 @@ class RankController extends Controller
     
     public function store(StoreRankRequest $request)
     {
+        $userRole = Auth::user()->role;
         $this->rankService->rankStore($request->validated());
 
-        return redirect()->route('superadmin.rank.index')->with(
+        return redirect()->route($userRole . '.rank.index')->with(
             'success',
             'Rank added successfully!'
         );
@@ -47,9 +49,10 @@ class RankController extends Controller
     
     public function update(UpdateRankRequest $request, Rank $rank)
     {
+        $userRole = Auth::user()->role;
         $this->rankService->rankUpdate($rank, $request->validated());
 
-        return redirect()->route('superadmin.rank.edit', $rank)->with(
+        return redirect()->route($userRole . '.rank.edit', $rank)->with(
             'success',
             'Rank updated successfully!'
         );

@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- form -->
-            <form method="POST" action="{{ route('superadmin.program.store') }}">
+            <form method="POST" action="{{ route($userRole . '.program.store') }}">
                 @csrf
                 <!-- modal header -->
                 <div class="modal-header">
