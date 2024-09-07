@@ -13,7 +13,7 @@ class InformationService
             ['user_id' => $userId],
             $data
         );
-
+        
         return $information;
     }
 }

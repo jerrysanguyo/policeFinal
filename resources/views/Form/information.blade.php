@@ -38,7 +38,10 @@
     <div class="row">
         <div class="col-lg-4 col-md-12">
             <label for="gender" class="form-label">Gender:</label>
-            <input type="text" name="gender" id="gender" class="form-control" value="{{ old('gender', $userInformation->gender ?? '') }}">
+            <select name="gender" id="gender" class="form-select">
+                <option value="male" {{ $userInformation && $userInformation->gender === 'male' ? 'selected' : ''}}>Male</option>
+                <option value="female" {{ $userInformation && $userInformation->gender === 'female' ? 'selected' : ''}}>Female</option>
+            </select>
         </div>
         <div class="col-lg-4 col-md-12">
             <label for="birthdate" class="form-label">Birthdate:</label>

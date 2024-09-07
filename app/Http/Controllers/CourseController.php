@@ -31,10 +31,10 @@ class CourseController extends Controller
 
         $this->courseService->courseStore($data, $userId);
 
-        return redirect()->route($userRole . '.dashboard')->with(
-            'success',
-            'Courses saved successfully!'
-        );
+        return redirect()->route($userRole . '.dashboard')->with([
+            'success'   =>  'Course saved successfully!',
+            'activeTab' =>  'course'
+        ]);
     }
 
     public function update(UpdateCourseRequests $request, Course $course)
@@ -44,10 +44,10 @@ class CourseController extends Controller
 
         $this->courseService->courseUpdate($course, $data);
 
-        return redirect()->route($userRole . '.dashboard')->with(
-            'success',
-            'Course updated successfully!'
-        );
+        return redirect()->route($userRole . '.dashboard')->with([
+            'success'   =>  'Course saved successfully!',
+            'activeTab' =>  'course'
+        ]);
     }
 
     public function courseExnUpdate(StoreOrUpdateCourseRequest $request, CourseExtension $courseExn)
@@ -57,10 +57,10 @@ class CourseController extends Controller
 
         $this->courseService->courseExnUpdate($courseExn, $data);
 
-        return redirect()->route($userRole . '.dashboard')->with(
-            'success',
-            'Course updated successfully!'
-        );
+        return redirect()->route($userRole . '.dashboard')->with([
+            'success'   =>  'Course saved successfully!',
+            'activeTab' =>  'course'
+        ]);
     }
 
     public function destroy(Course $course)
@@ -68,9 +68,9 @@ class CourseController extends Controller
         $userRole = Auth::user()->role;
         $course->delete();
 
-        return redirect()->route($userRole . '.dashboard')->with(
-            'success',
-            'Course deleted successfully!'
-        );
+        return redirect()->route($userRole . '.dashboard')->with([
+            'success'   =>  'Course deleted successfully!',
+            'activeTab' =>  'course'
+        ]);
     }
 }

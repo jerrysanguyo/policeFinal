@@ -29,7 +29,7 @@
         </div>
         <div class="col-lg-3 col-md-12">
             <label for="height" class="form-label">Height (CM):</label>
-            <input type="number" name="height" id="height" class="form-control" value="{{ $userTraining->height ?? '' }}">
+            <input type="number" name="height" id="height" class="form-control" value="{{ $userTraining->height ?? '' }}"  step="0.01">
         </div>
         <div class="col-lg-3 col-md-12">
             <label for="height_m" class="form-label">Height (Meter):</label>
@@ -43,15 +43,21 @@
         const heightInput = document.getElementById('height');
         const heightMInput = document.getElementById('height_m');
 
-        heightInput.addEventListener('input', function () {
-            const heightInCm = this.value;
+        function updateHeightM() {
+            const heightInCm = heightInput.value;
 
             if (heightInCm) {
                 heightMInput.value = (heightInCm / 100).toFixed(2);
             } else {
                 heightMInput.value = ''; 
             }
-        });
+        }
+
+        if (heightInput.value) {
+            updateHeightM();
+        }
+
+        heightInput.addEventListener('input', updateHeightM);
     });
     
     document.addEventListener('DOMContentLoaded', () => {
@@ -59,7 +65,7 @@
         const adminTrainingSelect = document.getElementById('admin_training');
         const existingAdminTrainingId = '{{ $userTraining->admin_training ?? '' }}';
 
-        console.log('Existing Admin Training ID:', existingAdminTrainingId); // Debug to check value
+        console.log('Existing Admin Training ID:', existingAdminTrainingId); 
 
         async function populateAdminTraining(courseId) {
             adminTrainingSelect.innerHTML = '<option value="">Choose ..</option>';
@@ -75,7 +81,6 @@
                         option.textContent = training.name;
                         adminTrainingSelect.appendChild(option);
 
-                        // Make sure to convert to integer if necessary
                         if (parseInt(training.id) === parseInt(existingAdminTrainingId)) {
                             option.selected = true;
                         }
@@ -87,12 +92,10 @@
             }
         }
 
-        // Populate on page load if a course is selected
         if (adminCourseSelect.value) {
             populateAdminTraining(adminCourseSelect.value);
         }
 
-        // Update when the course selection changes
         adminCourseSelect.addEventListener('change', function () {
             const courseId = this.value;
             populateAdminTraining(courseId);

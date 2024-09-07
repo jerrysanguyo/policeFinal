@@ -34,9 +34,9 @@ class SpecialTrainingController extends Controller
         $data = $request->validated();
         $this->specialTrainingService->storeOrUpdateSpecialTraining($data, $userId);
 
-        return redirect()->route($userRole . '.dashboard')->with(
-            'success', 
-            'Information saved successfully!'
-        );
+        return redirect()->route($userRole . '.dashboard')->with([
+            'success'   =>  'Special training saved successfully!',
+            'activeTab' =>  'training'
+        ]);
     }
 }

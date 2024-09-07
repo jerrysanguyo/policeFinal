@@ -23,11 +23,12 @@ class InformationController extends Controller
         $userId = Auth::id();
         $userRole = Auth::user()->role;
         $data = $request->validated();
-        $this->informationService->storeOrUpdateInformation($data, $userId);
 
-        return redirect()->route($userRole . '.dashboard')->with(
-            'success', 
-            'Information saved successfully!'
-        );
+        $information = $this->informationService->storeOrUpdateInformation($data, $userId);
+
+        return redirect()->route($userRole . '.dashboard')->with([
+            'success'   => 'Information saved successfully!',
+            'activeTab' => 'information',
+        ]);
     }
 }
