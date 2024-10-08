@@ -14,6 +14,8 @@ class Course extends Model
         'user_id',
         'program_id',
         'class_number',
+        'start_date',
+        'end_date',
         'duration',
         'ranking',
     ];

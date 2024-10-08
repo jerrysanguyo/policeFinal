@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card border shadow">
                 <div class="card-body">
                     @if(session('success'))
@@ -48,6 +48,14 @@
                                     III. Specialized Course training
                             </button>
                         </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link {{ session('activeTab') == 'physical' ? 'active' : '' }}"
+                                id="physical-tab" data-bs-toggle="tab" data-bs-target="#physical-tab-pane"
+                                type="button" role="tab" aria-controls="physical-tab-pane"
+                                aria-selected="{{ session('activeTab') == 'physical' ? 'true' : 'false' }}">
+                                    IV. Physical Fitness training
+                            </button>
+                        </li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade {{ session('activeTab', 'information') == 'information' ? 'show active' : '' }}" id="information-tab-pane" role="tabpanel" aria-labelledby="information-tab" tabindex="0">
@@ -58,6 +66,9 @@
                         </div>
                         <div class="tab-pane fade {{ session('activeTab') == 'training' ? 'show active' : '' }}" id="training-tab-pane" role="tabpanel" aria-labelledby="training-tab" tabindex="0">
                             @include('Form.training')
+                        </div>
+                        <div class="tab-pane fade {{ session('activeTab') == 'physical' ? 'show active' : '' }}" id="physical-tab-pane" role="tabpanel" aria-labelledby="physical-tab" tabindex="0">
+                            @include('Form.physical')
                         </div>
                     </div>
                 </div>

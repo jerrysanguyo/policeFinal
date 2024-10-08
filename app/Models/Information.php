@@ -20,6 +20,7 @@ class Information extends Model
         'birthdate',
         'age',
         'office_id',
+        'shift',
         'entered_service',
         'last_promotion',
     ];

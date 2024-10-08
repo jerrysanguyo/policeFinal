@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('birthdate');
             $table->integer('age');
             $table->foreignId('office_id')->constrained('offices');
+            $table->date('shift');
             $table->date('entered_service');
             $table->date('last_promotion');
             $table->timestamps();

@@ -14,17 +14,27 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-4">
+            <div class="col-lg-6 col-md-4">
                 <label for="class_number" class="form-label">Class number:</label>
                 <input type="text" name="class_number[]" id="class_number" class="form-control">
             </div>
-            <div class="col-lg-4 col-md-4">
+            <!-- <div class="col-lg-4 col-md-4">
                 <label for="duration" class="form-label">Duration of training:</label>
                 <input type="number" name="duration[]" id="duration" class="form-control">
-            </div>
-            <div class="col-lg-4 col-md-4">
+            </div> -->
+            <div class="col-lg-6 col-md-4">
                 <label for="ranking" class="form-label">Rank in final order of merit (overall):</label>
                 <input type="number" name="ranking[]" id="ranking" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <label for="start_date" class="form-label">Start date:</label>
+                <input type="date" name="start_date[]" id="start_date" class="form-control">
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <label for="end_date" class="form-label">End date:</label>
+                <input type="date" name="end_date[]" id="end_date" class="form-control">
             </div>
         </div>
     </div>
@@ -150,11 +160,16 @@
                     <label for="class_number" class="form-label">Class number:</label>
                     <input type="text" name="class_number" id="class_number" class="form-control" value="{{ $course->class_number }}">
                 </div>
-                <div class="col-lg-3 col-md-3">
-                    <label for="duration" class="form-label">Duration of training:</label>
-                    <input type="number" name="duration" id="duration" class="form-control" value="{{ $course->duration }}">
+                
+                <div class="col-lg-2 col-md-2">
+                    <label for="start_date" class="form-label">Start date:</label>
+                    <input type="date" name="start_date" id="start_date" class="form-control" value="{{ $course->start_date }}">
                 </div>
-                <div class="col-lg-4 col-md-4">
+                <div class="col-lg-2 col-md-2">
+                    <label for="end_date" class="form-label">End date:</label>
+                    <input type="date" name="end_date" id="end_date" class="form-control" value="{{ $course->end_date }}">
+                </div>
+                <div class="col-lg-3 col-md-4">
                     <label for="ranking" class="form-label">Rank in final order of merit (overall):</label>
                     <input type="number" name="ranking" id="ranking" class="form-control" value="{{ $course->ranking }}">
                 </div>

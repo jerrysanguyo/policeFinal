@@ -21,6 +21,7 @@ class StoreOrUpdateInformationRequest extends FormRequest
             'birthdate'         => ['required', 'date'],  
             'age'               => ['required', 'integer'],  
             'office_id'         => ['required', 'integer', 'exists:offices,id'], 
+            'shift'             => ['required', 'date'],
             'entered_service'   => ['required', 'date'],   
             'last_promotion'    => ['required', 'date'],
         ];

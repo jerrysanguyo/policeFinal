@@ -53,7 +53,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-4 col-md-12">
+        <div class="col-lg-3 col-md-12">
             <label for="office_id" class="form-label">Office:</label>
             <select name="office_id" id="office_id" class="form-select">
                 @foreach($listOfOffice as $office)
@@ -63,11 +63,15 @@
                 @endforeach
             </select>
         </div>
-        <div class="col-lg-4 col-md-12">
+        <div class="col-lg-3 col-md-12">
+            <label for="shift" class="form-label">Date of shift</label>
+            <input type="date" name="shift" id="shift" class="form-control" value="{{ old('shift', $userInformation->shift ?? '') }}">
+        </div>
+        <div class="col-lg-3 col-md-12">
             <label for="entered_service" class="form-label">Date of entered service:</label>
             <input type="date" name="entered_service" id="entered_service" class="form-control" value="{{ old('entered_service', $userInformation->entered_service ?? '') }}">
         </div>
-        <div class="col-lg-4 col-md-12">
+        <div class="col-lg-3 col-md-12">
             <label for="last_promotion" class="form-label">Date of last promotion:</label>
             <input type="date" name="last_promotion" id="last_promotion" class="form-control" value="{{ old('last_promotion', $userInformation->last_promotion ?? '') }}">
         </div>

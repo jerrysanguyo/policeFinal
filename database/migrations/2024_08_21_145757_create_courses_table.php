@@ -13,7 +13,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('program_id')->constrained('programs');
             $table->string('class_number');
-            $table->integer('duration');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->integer('ranking');
             $table->timestamps();
         });

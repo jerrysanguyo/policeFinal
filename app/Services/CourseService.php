@@ -17,7 +17,8 @@ class CourseService
                 'user_id'      => $userId,
                 'program_id'   => $programId,
                 'class_number' => $data['class_number'][$index],
-                'duration'     => $data['duration'][$index],
+                'start_date'   => $data['start_date'][$index],
+                'end_date'     => $data['end_date'][$index],
                 'ranking'      => $data['ranking'][$index],
             ]);
         }
@@ -41,7 +42,8 @@ class CourseService
         $course->update([
             'program_id'   => $data['program_id'],
             'class_number' => $data['class_number'],
-            'duration'     => $data['duration'],
+            'start_date'   => $data['start_date'],
+            'end_date'     => $data['start_date'],
             'ranking'      => $data['ranking'],
         ]);
 
