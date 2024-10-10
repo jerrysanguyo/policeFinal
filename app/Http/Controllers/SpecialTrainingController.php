@@ -6,7 +6,8 @@ use App\{
     Models\SpecialTraining,
     Models\SpecialCourse,
     Models\SpecialCourseExtension,
-    Http\Requests\StoreOrUpdateSpecialTrainingRequest,
+    Http\Requests\StoreSpecialTrainingRequest,
+    Http\Requests\UpdateSpecialTrainingRequest,
     Services\SpecialTrainingService,
     DataTables\UniversalDataTable,
 };
@@ -27,15 +28,39 @@ class SpecialTrainingController extends Controller
         return response()->json($trainings);
     }
 
-    public function storeOrUpdate(StoreOrUpdateSpecialTrainingRequest $request)
+    public function store(StoreSpecialTrainingRequest $request)
     {
         $userId = Auth::id();
         $userRole = Auth::user()->role;
         $data = $request->validated();
-        $this->specialTrainingService->storeOrUpdateSpecialTraining($data, $userId);
+        $this->specialTrainingService->store($data, $userId);
 
         return redirect()->route($userRole . '.dashboard')->with([
             'success'   =>  'Special training saved successfully!',
+            'activeTab' =>  'training'
+        ]);
+    }
+
+    public function update(UpdateSpecialTrainingRequest $request, SpecialTraining $training)
+    {
+        $userId = Auth::id();
+        $userRole = Auth::user()->role;
+        $this->specialTrainingService->update($request->validated(), $userId, $training);
+
+        return redirect()->route($userRole . '.dashboard')->with([
+            'success'   =>  'Special training saved successfully!',
+            'activeTab' =>  'training'
+        ]);
+    }
+
+    public function destroy(SpecialTraining $training)
+    {
+        $userId = Auth::id();
+        $userRole = Auth::user()->role;
+        $this->specialTrainingService->destroy($training);
+
+        return redirect()->route($userRole . '.dashboard')->with([
+            'success'   =>  'Special training deleted successfully!',
             'activeTab' =>  'training'
         ]);
     }

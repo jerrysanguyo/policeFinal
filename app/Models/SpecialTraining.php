@@ -15,8 +15,8 @@ class SpecialTraining extends Model
         'admin_course',
         'admin_training',
         'class_number',
-        'duration',
-        'height',
+        'start_date',
+        'end_date'
     ];
 
     public static function getTraining($userId)

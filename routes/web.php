@@ -36,6 +36,7 @@ Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('supe
     Route::resource('program', ProgramController::class);
     Route::resource('special', SpecialCourseController::class);
     Route::resource('specialExtn', SpecialCourseExtnController::class);
+    Route::resource('training', SpecialTrainingController::class);
     // course & course Extension
     Route::resource('course', CourseController::class);
     Route::get('/course-extension/{courseExn}', [CourseController::class, 'courseExnUpdate'])
@@ -44,8 +45,8 @@ Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('supe
     Route::post('/information/storeOrUpdate', [InformationController::class, 'storeOrUpdate'])
         ->name('information.storeOrUpdate');
     //training
-    Route::post('training/storeOrUpdate', [SpecialTrainingController::class, 'storeOrUpdate'])
-        ->name('training.storeOrUpdate');
+    // Route::post('training/storeOrUpdate', [SpecialTrainingController::class, 'storeOrUpdate'])
+    //     ->name('training.storeOrUpdate');
 });
 
 // admin middleware
@@ -59,6 +60,7 @@ Route::middleware(['auth', 'check.user.role'])->prefix('admin')->name('admin.')-
     Route::resource('program', ProgramController::class);
     Route::resource('special', SpecialCourseController::class);
     Route::resource('specialExtn', SpecialCourseExtnController::class);
+    Route::resource('training', SpecialTrainingController::class);
     // Information
     Route::post('/information/storeOrUpdate', [InformationController::class, 'storeOrUpdate'])
         ->name('information.storeOrUpdate');
@@ -70,8 +72,8 @@ Route::middleware(['auth', 'check.user.role'])->prefix('admin')->name('admin.')-
     Route::post('/information/storeOrUpdate', [InformationController::class, 'storeOrUpdate'])
         ->name('information.storeOrUpdate');
     //training
-    Route::post('training/storeOrUpdate', [SpecialTrainingController::class, 'storeOrUpdate'])
-        ->name('training.storeOrUpdate');
+    // Route::post('training/storeOrUpdate', [SpecialTrainingController::class, 'storeOrUpdate'])
+    //     ->name('training.storeOrUpdate');
 });
 
 // user middleware

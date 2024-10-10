@@ -1,5 +1,5 @@
 <span class="fs-4">PHYSICAL FITNESS TRAINING:</span>
-<form action="{{ route($baseRoute . '.training.storeOrUpdate') }}" method="post">
+<form action="#" method="post">
     @csrf
     <div class="row mt-3">
 

@@ -46,6 +46,7 @@ class HomeController extends Controller
         $userCourseExn = CourseExtension::getCourseExn($user->id);
         // training
         $userTraining = SpecialTraining::getTraining($user->id);
+        $getAllTraining = SpecialTraining::getAllTraining($user->id);
         
         return view('home', compact(
             'user',
@@ -59,6 +60,7 @@ class HomeController extends Controller
             'listOfCourse',
             'userCourseExn',
             'userTraining',
+            'getAllTraining'
         ));
     }
 }

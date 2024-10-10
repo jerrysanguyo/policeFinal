@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreignId('admin_course')->constrained('special_courses');
             $table->foreignId('admin_training')->constrained('special_course_extensions');
             $table->string('class_number');
-            $table->integer('duration');
-            $table->decimal('height', 5,2);
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }
