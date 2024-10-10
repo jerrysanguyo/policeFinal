@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             RankSeeder::class,
             SpecialCourseSeeder::class,
             SpecialCourseExtensionSeeder::class,
+            BmiSeeder::class,
         ]);
     }
 }
