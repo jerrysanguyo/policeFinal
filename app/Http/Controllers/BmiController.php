@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\{
     Models\Bmi,
-    Services\BmiServices,
+    Services\BmiService,
     DataTables\UniversalDataTable,
     Http\Requests\StoreBmiRequest,
     Http\Requests\UpdateBmiRequest,
@@ -14,26 +14,26 @@ use Illuminate\Support\Facades\Auth;
 
 class BmiController extends Controller
 {
-    protected $bmiServices;
+    protected $bmiService;
     
-    public function __contruct(BmiServices $bmiServices)
+    public function __construct(BmiService $bmiService)
     {
-        $this->bmiServices = $bmiServices;
+        $this->bmiService = $bmiService;
     }
 
-    public function index(UnviersalDataTable $dataTable)
+    public function index(UniversalDataTable $dataTable)
     {
         $listOfBmi = Bmi::getAllBmi();
 
-        return $dataTable->render('Bmi.index')->compact(
+        return $dataTable->render('Bmi.index', compact(
             'listOfBmi'
-        );
+        ));
     }
     
     public function store(StoreBmiRequest $request)
     {
         $userRole = Auth::user()->role;
-        $this->bmiServices->store($request->validated());
+        $this->bmiService->store($request->validated());
 
         return redirect()->route($userRole . '.bmi.store')->with(
             'success', 
@@ -45,16 +45,16 @@ class BmiController extends Controller
     {
         $listOfBmi = Bmi::getAllBmi();
 
-        return view('Bmi.edit')->compact(
+        return view('Bmi.edit', compact(
             'bmi',
             'listOfBmi',
-        );
+        ));
     }
     
     public function update(UpdateBmiRequest $request, Bmi $bmi)
     {
         $userRole = Auth::user()->role;
-        $this->bmiServices->update($request->validate(), $bmi);
+        $this->bmiService->update($request->validated(), $bmi);
 
         return redirect()->route($userRole . '.bmi.edit', $bmi)->with(
             'success',
@@ -65,7 +65,7 @@ class BmiController extends Controller
     public function destroy(Bmi $bmi)
     {
         $userRole = Auth::user()->role;
-        $this->bmiServices->destroy($bmi);
+        $this->bmiService->destroy($bmi);
 
         return redirect()->route($userRole . '.bmi.index')->with(
             'success',

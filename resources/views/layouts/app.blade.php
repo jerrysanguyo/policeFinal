@@ -92,6 +92,11 @@
                                     <li><a class="dropdown-item" href="{{ route($userRole . '.specialExtn.index') }}">Special course (Extension)</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route($userRole . '.bmi.index') }}" class="nav-link">
+                                    BMI
+                                </a>
+                            </li>
                         @endif
                     </ul>
                     <!-- Right Side Of Navbar -->

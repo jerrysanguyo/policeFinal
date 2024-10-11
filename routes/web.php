@@ -13,6 +13,7 @@ use App\Http\Controllers\{
     SpecialCourseController,
     SpecialCourseExtnController,
     SpecialTrainingController,
+    BmiController,
 };
 
 Route::get('/', function () {
@@ -37,6 +38,7 @@ Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('supe
     Route::resource('special', SpecialCourseController::class);
     Route::resource('specialExtn', SpecialCourseExtnController::class);
     Route::resource('training', SpecialTrainingController::class);
+    Route::resource('bmi', BmiController::class);
     // course & course Extension
     Route::resource('course', CourseController::class);
     Route::get('/course-extension/{courseExn}', [CourseController::class, 'courseExnUpdate'])
@@ -61,6 +63,7 @@ Route::middleware(['auth', 'check.user.role'])->prefix('admin')->name('admin.')-
     Route::resource('special', SpecialCourseController::class);
     Route::resource('specialExtn', SpecialCourseExtnController::class);
     Route::resource('training', SpecialTrainingController::class);
+    Route::resource('bmi', BmiController::class);
     // Information
     Route::post('/information/storeOrUpdate', [InformationController::class, 'storeOrUpdate'])
         ->name('information.storeOrUpdate');
