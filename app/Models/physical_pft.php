@@ -5,21 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class physical_pft extends Model
+class Physical_pft extends Model
 {
     use HasFactory;
 
     protected $table = 'physical_pfts';
     protected $fillable = [
         'user_id',
-        'physical_id',
         'month',
         'year',
         'date_pft',
         'remarks',
         'score',
         'type',
-        'pft_result'
+        'pft_result_name',
+        'pft_result_path',
     ];
 
     public function user()
@@ -27,8 +27,8 @@ class physical_pft extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function physical()
+    public static function userPft($userId)
     {
-        return $this->belongsTo(Physical::class, 'physical_id');
+        return self::where('user_id', $userId)->get();
     }
 }

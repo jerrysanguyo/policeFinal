@@ -18,6 +18,9 @@ use App\{
     Models\SpecialCourse,
     Models\SpecialCourseExtension,
     Models\Bmi,
+    Models\Physical,
+    Models\Physical_pft,
+    Models\Physical_picture,
 };
 
 class HomeController extends Controller
@@ -49,6 +52,10 @@ class HomeController extends Controller
         // training
         $userTraining = SpecialTraining::getTraining($user->id);
         $getAllTraining = SpecialTraining::getAllTraining($user->id);
+        //physical
+        $userPhysical = Physical::userPhysical($user->id);
+        $userPft = Physical_pft::userPft($user->id);
+        $userPicture = Physical_picture::userPicture($user->id);
         
         return view('home', compact(
             'user',
@@ -63,7 +70,10 @@ class HomeController extends Controller
             'listOfCourse',
             'userCourseExn',
             'userTraining',
-            'getAllTraining'
+            'getAllTraining',
+            'userPhysical',
+            'userPft',
+            'userPicture',
         ));
     }
 }

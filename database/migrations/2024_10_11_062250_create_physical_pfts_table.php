@@ -20,7 +20,8 @@ return new class extends Migration
             $table->enum('remarks', ['passed', 'failed']);
             $table->decimal('score', 3,2);
             $table->enum('type', ['remedial', 'not']);
-            $table->decimal('pft_result', 3,2);
+            $table->string('pft_result_name');
+            $table->string('pft_result_path');
             $table->timestamps();
         });
     }

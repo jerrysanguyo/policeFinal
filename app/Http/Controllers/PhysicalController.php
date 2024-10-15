@@ -2,63 +2,41 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorePhysicalRequest;
-use App\Http\Requests\UpdatePhysicalRequest;
-use App\Models\Physical;
+use App\{
+    Models\Physical,
+    Models\Physical_picture,
+    Models\Physical_pft,
+    Services\PhysicalService,
+    Http\Requests\UpdatePhysicalRequest,
+    Http\Requests\StorePhysicalRequest,
+};
+
+use Illuminate\Support\Facades\Auth;
 
 class PhysicalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    protected $physicalService;
+    
+    public function __construct(PhysicalService $physicalService)
     {
-        //
+        $this->physicalService = $physicalService;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StorePhysicalRequest $request)
     {
-        //
-    }
+        $userRole = Auth::user()->role;
+        $this->physicalService->store($request->validated());
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Physical $physical)
-    {
-        //
+        return redirect()->route($userRole . '.dashboard')->with(
+            'success', 'Physical fitness training saved successfully!'
+        );
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Physical $physical)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(UpdatePhysicalRequest $request, Physical $physical)
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(Physical $physical)
     {
         //

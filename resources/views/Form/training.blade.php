@@ -6,7 +6,7 @@
         <div class="row mt-3">
             <div class="col-lg-6 col-md-12">
                 <label for="admin_course" class="form-label">Admin courses category:</label>
-                <select name="admin_course[]" class="form-select admin-course-select">
+                <select name="admin_course[]" id="admin_course" class="form-select admin-course-select">
                     <option value="">Choose ..</option>
                     @foreach($listOfSpecialCourse as $course)
                         <option value="{{ $course->id }}">{{ $course->name }}</option>
@@ -15,7 +15,7 @@
             </div>
             <div class="col-lg-6 col-md-12">
                 <label for="admin_training" class="form-label">Admin training course:</label>
-                <select name="admin_training[]" class="form-select admin-training-select">
+                <select name="admin_training[]" id="admin_training" class="form-select admin-training-select">
                     <option value="">Choose ..</option>
                 </select>
             </div>
