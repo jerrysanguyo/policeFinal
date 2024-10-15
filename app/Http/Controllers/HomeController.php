@@ -17,6 +17,7 @@ use App\{
     Models\SpecialTraining,
     Models\SpecialCourse,
     Models\SpecialCourseExtension,
+    Models\Bmi,
 };
 
 class HomeController extends Controller
@@ -36,6 +37,7 @@ class HomeController extends Controller
         $listOfProgram = Program::getAllProgram();
         $listOfSpecialCourse = SpecialCourse::getAllSpecial();
         $listOfSpecialExn = SpecialCourseExtension::getAllSpecialExn();
+        $listOfBmi = Bmi::getAllBmi();
         // data fetched per user
         // ---------------------
         // information
@@ -55,6 +57,7 @@ class HomeController extends Controller
             'listOfProgram', 
             'listOfSpecialCourse',
             'listOfSpecialExn',
+            'listOfBmi',
             'userInformation', 
             'userCourse',
             'listOfCourse',

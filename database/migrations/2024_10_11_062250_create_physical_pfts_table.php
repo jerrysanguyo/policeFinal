@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('physical_pfts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('physical_id')->constrained('physicals');
             $table->string('month');
             $table->integer('year');
             $table->date('date_pft');

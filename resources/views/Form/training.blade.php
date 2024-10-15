@@ -42,8 +42,10 @@
     <!-- Add and Submit Buttons -->
     <div class="row mt-3">
         <div class="col-lg-12 col-md-12">
-            <button type="button" id="add-training-set" class="btn btn-secondary">Add Another Training</button>
-            <input type="submit" value="Submit" class="btn btn-primary">
+            <div class="d-flex justify-content-between">
+                <input type="submit" value="Submit" class="btn btn-primary">
+                <button type="button" id="add-training-set" class="btn btn-secondary">Add Another Training</button>
+            </div>
         </div>
     </div>
 </form>
