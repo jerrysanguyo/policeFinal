@@ -2,7 +2,16 @@
 <form action="#" method="post">
     @csrf
     <div class="row mt-3">
-
+        <div class="col-lg-6 col-md-12">
+            <label for="bmi_result" class="form-label">Bmi result:</label>
+            <input type="number" name="bmi_result" id="bmi_result" class="form-control">
+        </div>
+        <div class="col-lg-6 col-md-12">
+            <label for="bmi_category" class="form-label">Bmi Category:</label>
+            <select name="bmi_category" id="bmi_category" class="form-select">
+                
+            </select>
+        </div>
     </div>
     <div class="row mt-3">
         <div class="col-lg-4 col-md-12">
