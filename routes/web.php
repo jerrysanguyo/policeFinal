@@ -79,9 +79,11 @@ Route::middleware(['auth', 'check.user.role'])->prefix('admin')->name('admin.')-
     // information
     Route::post('/information/storeOrUpdate', [InformationController::class, 'storeOrUpdate'])
         ->name('information.storeOrUpdate');
-    //training
-    // Route::post('training/storeOrUpdate', [SpecialTrainingController::class, 'storeOrUpdate'])
-    //     ->name('training.storeOrUpdate');
+    //physical picture & Pft result
+    Route::put('/physical/updatePic/{physicalPic}', [PhysicalController::class, 'updatePicture'])
+    ->name('physical.updatePic');
+    Route::put('physical/updatePft/{physicalPft}', [PhysicalController::class, 'updatePftResult'])
+        ->name('physical.updatePft');
 });
 
 // user middleware
@@ -90,12 +92,18 @@ Route::middleware(['auth', 'check.user.role'])->prefix('user')->name('user.')->g
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard'); 
     // course & course Extension
     Route::resource('course', CourseController::class);
+    Route::resource('physical', PhysicalController::class);
     Route::get('/course-extension/{courseExn}', [CourseController::class, 'courseExnUpdate'])
         ->name('courseExn.update');
     // information
     Route::post('/information/storeOrUpdate', [InformationController::class, 'storeOrUpdate'])
         ->name('information.storeOrUpdate');
     //training
-    Route::post('training/storeOrUpdate', [SpecialTrainingController::class, 'storeOrUpdate'])
-        ->name('training.storeOrUpdate');
+    // Route::post('training/storeOrUpdate', [SpecialTrainingController::class, 'storeOrUpdate'])
+    //     ->name('training.storeOrUpdate');
+    //physical picture & Pft result
+    Route::put('/physical/updatePic/{physicalPic}', [PhysicalController::class, 'updatePicture'])
+        ->name('physical.updatePic');
+    Route::put('physical/updatePft/{physicalPft}', [PhysicalController::class, 'updatePftResult'])
+        ->name('physical.updatePft');
 });
