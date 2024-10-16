@@ -168,7 +168,9 @@
     @endif
     @if($userPft)
         @foreach($userPft as $pft)
-            <form action="" method="post">
+            <form action="{{ route($baseRoute . '.physical.updatePft', ['physicalPft' => $pft->id]) }}" method="post" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
                 <div class="row mt-3">
                     <div class="col-lg-3 col-md-12">
                         <img src="{{ asset($pft->pft_result_path) }}" alt="{{ $picture->pft_result_name }}" class="img-thumbnail mb-2">
@@ -205,8 +207,8 @@
                             <div class="col-lg-4 col-md-12">
                                 <label for="type" class="form-label">Type:</label>
                                 <select name="type" class="form-select">
-                                    <option value="remedial" {{ $pft && $pft->type === 'remedial' ? 'seclected' : '' }}>Remedial</option>
-                                    <option value="not" {{ $pft && $pft->type === 'not' ? 'seclected' : '' }}>Not</option>
+                                    <option value="remedial" {{ $pft && $pft->type === 'remedial' ? 'selected' : '' }}>Remedial</option>
+                                    <option value="not" {{ $pft && $pft->type === 'not' ? 'selected' : '' }}>Not</option>
                                 </select>
                             </div>
                         </div>

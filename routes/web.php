@@ -48,9 +48,11 @@ Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('supe
     // information
     Route::post('/information/storeOrUpdate', [InformationController::class, 'storeOrUpdate'])
         ->name('information.storeOrUpdate');
-    //physical picture
+    //physical picture & Pft result
     Route::put('/physical/updatePic/{physicalPic}', [PhysicalController::class, 'updatePicture'])
         ->name('physical.updatePic');
+    Route::put('physical/updatePft/{physicalPft}', [PhysicalController::class, 'updatePftResult'])
+        ->name('physical.updatePft');
 });
 
 // admin middleware

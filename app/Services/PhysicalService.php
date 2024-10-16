@@ -59,7 +59,7 @@ class PhysicalService
         foreach (['left', 'right', 'front'] as $position) {
             $picture = $data["picture_{$position}"] ?? null;
             if ($picture) {
-                $filePath = "{$userFolder}/pictures";
+                $filePath = "{$userFolder}/athletic-pictures";
                 if (!File::exists($filePath)) {
                     File::makeDirectory($filePath, 0755, true);
                 }
@@ -106,12 +106,26 @@ class PhysicalService
             ]);
         }
     }
+
+    public function update(Physical $physical, array $data)
+    {
+        $physical->update([
+            'bmi_result'    => $data['bmi_result'],
+            'bmi_category'  => $data['bmi_category'],
+            'waist'         => $data['waist'],
+            'hip'           => $data['hip'],
+            'wrist'         => $data['wrist'],
+            'height'        => $data['height'],
+        ]);
+
+        return $physical;
+    }
     
     public function updatePhysicalPic(Physical_picture $physicalPic, $newPicture)
     {
         // Define only the directory path
         $pictureFolder = public_path(dirname($physicalPic->picture_path));
-        $pictureName = basename($physicalPic->picture_path); // Extract the filename
+        $pictureName = basename($physicalPic->picture_path);
     
         // Create directory if it doesn't exist
         if (!File::exists($pictureFolder)) {
@@ -126,18 +140,34 @@ class PhysicalService
         return $newPicture;
     }
 
-    public function update(Physical $physical, array $data)
-    {
-        $physical->update([
-            'bmi_result'    => $data['bmi_result'],
-            'bmi_category'  => $data['bmi_category'],
-            'waist'         => $data['waist'],
-            'hip'           => $data['hip'],
-            'wrist'         => $data['wrist'],
-            'height'        => $data['height'],
+    public function updatephysicalPft(Physical_pft $physicalPft, array $data, $newPicture)
+    {    
+        // Only process the new picture if it's provided
+        if ($newPicture) {
+            $pictureFolder = public_path(dirname($physicalPft->pft_result_path));
+            $pictureName = basename($physicalPft->pft_result_name);
+    
+            // Ensure the directory exists or create it
+            if (!File::exists($pictureFolder)) {
+                if (!File::makeDirectory($pictureFolder, 0775, true)) {
+                    return response()->json(['error' => 'Unable to create directory.'], 500);
+                }
+            }
+    
+            // Move the new picture to the directory, replacing the old one if it exists
+            $newPicture->move($pictureFolder, $pictureName);
+        }
+
+        $physicalPft->update([
+            'year'              => $data['year'],
+            'month'             => 'January-December',
+            'date_pft'          => $data['date_pft'],
+            'remarks'           => $data['remarks'],
+            'score'             => $data['score'],
+            'type'              => $data['type'],
         ]);
 
-        return $physical;
+        return $physicalPft;
     }
 
     public function destroy()

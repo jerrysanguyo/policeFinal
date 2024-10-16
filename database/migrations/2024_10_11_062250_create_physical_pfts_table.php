@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('year');
             $table->date('date_pft');
             $table->enum('remarks', ['passed', 'failed']);
-            $table->decimal('score', 3,2);
+            $table->decimal('score', 5,2);
             $table->enum('type', ['remedial', 'not']);
             $table->string('pft_result_name');
             $table->string('pft_result_path');

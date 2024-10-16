@@ -8,6 +8,7 @@ use App\{
     Models\Physical_pft,
     Services\PhysicalService,
     Http\Requests\UpdatePhysicalPictureRequest,
+    Http\Requests\UpdatePhysicalPftRequest,
     Http\Requests\UpdatePhysicalRequest,
     Http\Requests\StorePhysicalRequest,
 };
@@ -51,7 +52,19 @@ class PhysicalController extends Controller
         $this->physicalService->update($physical, $request->validated());
 
         return redirect()->route($userRole . '.dashboard')->with([
-            'success' => 'Athletic picture saved successfully!',
+            'success' => 'Physical fitness saved successfully!',
+            'activeTab' =>  'physical'
+        ]);
+    }
+
+    public function updatePftResult(UpdatePhysicalPftRequest $request, Physical_pft $physicalPft)
+    {
+        $userRole = Auth::user()->role;
+        $newPicture = $request->file('pft_picture');
+        $this->physicalService->updatephysicalPft($physicalPft, $request->validated(), $newPicture);
+
+        return redirect()->route($userRole . '.dashboard')->with([
+            'success' => 'Pft result saved successfully!',
             'activeTab' =>  'physical'
         ]);
     }
