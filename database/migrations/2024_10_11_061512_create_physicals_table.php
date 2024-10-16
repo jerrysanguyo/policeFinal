@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('physicals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->integer('bmi_result');
+            $table->decimal('bmi_result', 5,2);
             $table->foreignId('bmi_category')->constrained('bmis');
             $table->integer('waist');
             $table->integer('hip');

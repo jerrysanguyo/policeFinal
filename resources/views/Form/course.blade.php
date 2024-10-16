@@ -97,7 +97,7 @@
             @method('PUT')
             <div class="row">
                 <div class="col-lg-4 col-md-4">
-                    <label for="high_training" class="form-label">Highes mandatory training:</label>
+                    <label for="high_training" class="form-label">Highest mandatory training:</label>
                     <select name="high_training" id="high_training" class="form-select">
                             @foreach($listOfProgram as $program)
                             <option value="{{ $program->id }}" {{ $userCourseExn && $userCourseExn->high_training === $program->id ? 'selected' : '' }}>{{ $program->name }}</option>

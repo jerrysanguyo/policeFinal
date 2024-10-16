@@ -64,7 +64,7 @@
             </select>
         </div>
         <div class="col-lg-3 col-md-12">
-            <label for="shift" class="form-label">Date of shift</label>
+            <label for="shift" class="form-label">Date of shift:</label>
             <input type="date" name="shift" id="shift" class="form-control" value="{{ old('shift', $userInformation->shift ?? '') }}">
         </div>
         <div class="col-lg-3 col-md-12">
