@@ -14,7 +14,12 @@ class UpdatePhysicalRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'bmi_result'    => ['required', 'numeric'],
+            'bmi_category'  => ['required','exists:bmis,id'],
+            'waist'         => ['required','numeric'],
+            'hip'           => ['required','numeric'],
+            'wrist'         => ['required','numeric'],
+            'height'        => ['required','numeric'],
         ];
     }
 }

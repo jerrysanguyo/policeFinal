@@ -104,7 +104,9 @@
     </div>
 </form>
 @else
-    <form action="" method="post">
+    <form action="{{ route($baseRoute . '.physical.update', $userPhysical->id) }}" method="post">
+        @csrf
+        @method('PUT')
         <div class="row mt-3">
             <div class="col-lg-6 col-md-12">
                 <label for="bmi_result" class="form-label">Bmi result:</label>
@@ -139,6 +141,11 @@
             <div class="col-lg-3 col-md-12">
                 <label for="height_m" class="form-label">Height (Meter):</label>
                 <input type="number" name="height_m" id="height_m" class="form-control" readonly value="{{ old('height_m') }}">
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-lg-12 col-md-12">
+                <input type="submit" value="Update" class="btn btn-primary">
             </div>
         </div>
     </form>
@@ -216,7 +223,6 @@
 @endif
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Function to set up the height in meters for a given height and height_m pair
     function setupHeightCalculation(heightInput, heightMInput) {
         function updateHeightM() {
             const heightInCm = parseFloat(heightInput.value);

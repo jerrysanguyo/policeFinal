@@ -47,7 +47,13 @@ class PhysicalController extends Controller
     
     public function update(UpdatePhysicalRequest $request, Physical $physical)
     {
-        //
+        $userRole = Auth::user()->role;
+        $this->physicalService->update($physical, $request->validated());
+
+        return redirect()->route($userRole . '.dashboard')->with([
+            'success' => 'Athletic picture saved successfully!',
+            'activeTab' =>  'physical'
+        ]);
     }
     
     public function destroy(Physical $physical)

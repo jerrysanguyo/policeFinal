@@ -126,9 +126,18 @@ class PhysicalService
         return $newPicture;
     }
 
-    public function update()
+    public function update(Physical $physical, array $data)
     {
+        $physical->update([
+            'bmi_result'    => $data['bmi_result'],
+            'bmi_category'  => $data['bmi_category'],
+            'waist'         => $data['waist'],
+            'hip'           => $data['hip'],
+            'wrist'         => $data['wrist'],
+            'height'        => $data['height'],
+        ]);
 
+        return $physical;
     }
 
     public function destroy()
