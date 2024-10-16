@@ -29,6 +29,6 @@ class Physical_pft extends Model
 
     public static function userPft($userId)
     {
-        return self::where('user_id', $userId)->get();
+        return self::where('user_id', $userId);
     }
 }

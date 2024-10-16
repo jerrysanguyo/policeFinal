@@ -18,7 +18,7 @@ use App\Http\Controllers\{
 };
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -48,9 +48,9 @@ Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('supe
     // information
     Route::post('/information/storeOrUpdate', [InformationController::class, 'storeOrUpdate'])
         ->name('information.storeOrUpdate');
-    //training
-    // Route::post('training/storeOrUpdate', [SpecialTrainingController::class, 'storeOrUpdate'])
-    //     ->name('training.storeOrUpdate');
+    //physical picture
+    Route::put('/physical/updatePic/{physicalPic}', [PhysicalController::class, 'updatePicture'])
+        ->name('physical.updatePic');
 });
 
 // admin middleware

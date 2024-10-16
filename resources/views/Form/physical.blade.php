@@ -142,6 +142,77 @@
             </div>
         </div>
     </form>
+    @if($userPicture)
+        <div class="d-flex mt-3">
+            @foreach($userPicture as $picture)
+                <form action="{{ route($baseRoute . '.physical.updatePic', ['physicalPic' => $picture->id]) }}" 
+                        method="post" class="me-3" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div>
+                        <img src="{{ asset($picture->picture_path) }}" alt="{{ $picture->remarks }}" class="img-thumbnail mb-2">
+                        <label for="picture" class="form-label">Picture in {{ $picture->remarks }}:</label>
+                        <input type="file" name="picture" id="picture" class="form-control" accept="image/*">
+                    </div>
+                    <input type="submit" value="Replace" class="btn btn-primary mt-2">
+                </form>
+            @endforeach
+        </div>
+    @endif
+    @if($userPft)
+        @foreach($userPft as $pft)
+            <form action="" method="post">
+                <div class="row mt-3">
+                    <div class="col-lg-3 col-md-12">
+                        <img src="{{ asset($pft->pft_result_path) }}" alt="{{ $picture->pft_result_name }}" class="img-thumbnail mb-2">
+                        <label for="pft_picture" class="form-label">Pft result:</label>
+                        <input type="file" name="pft_picture" class="form-control">
+                    </div>
+                    <div class="col-lg-9 col-md-12">
+                        <div class="row mt-3">
+                            <div class="col-lg-4 col-md-12">
+                                <label for="year" class="form-label">Year:</label>
+                                <input type="number" name="year" class="form-control" value="{{ $pft->year }}">
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <label for="month" class="form-label">Month:</label>
+                                <input type="text" name="month" class="form-control" value="{{ $pft->month }}" readonly>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <label for="date_pft" class="form-label">Date of pft:</label>
+                                <input type="date" name="date_pft" class="form-control" value="{{ $pft->date_pft }}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12">
+                                <label for="remarks" class="form-label">Remarks:</label>
+                                <select name="remarks" class="form-select">
+                                    <option value="passed" {{ $pft && $pft->remarks === 'passed' ? 'selected' : '' }}>Passed</option>
+                                    <option value="failed" {{ $pft && $pft->remarks === 'failed' ? 'selected' : '' }}>Failed</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <label for="score" class="form-label">Score:</label>
+                                <input type="number" name="score" class="form-control" value="{{ $pft->score }}">
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <label for="type" class="form-label">Type:</label>
+                                <select name="type" class="form-select">
+                                    <option value="remedial" {{ $pft && $pft->type === 'remedial' ? 'seclected' : '' }}>Remedial</option>
+                                    <option value="not" {{ $pft && $pft->type === 'not' ? 'seclected' : '' }}>Not</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-lg-12 col-md-12">
+                                <input type="submit" value="Save" class="btn btn-primary">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        @endforeach
+    @endif
 @endif
 <script>
 document.addEventListener('DOMContentLoaded', function() {

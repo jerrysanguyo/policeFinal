@@ -24,6 +24,6 @@ class Physical_picture extends Model
 
     public static function userPicture($userId)
     {
-        return self::where('user_id', $userId)->get();
+        return self::where('user_id', $userId);
     }
 }

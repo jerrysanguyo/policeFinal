@@ -5,6 +5,7 @@ namespace App\Services;
 use Illuminate\Support\Facades\{
     Auth,
     File,
+    Log,
 };
 
 use App\{
@@ -104,6 +105,25 @@ class PhysicalService
                 'pft_result_path'   => $pftFilePath,
             ]);
         }
+    }
+    
+    public function updatePhysicalPic(Physical_picture $physicalPic, $newPicture)
+    {
+        // Define only the directory path
+        $pictureFolder = public_path(dirname($physicalPic->picture_path));
+        $pictureName = basename($physicalPic->picture_path); // Extract the filename
+    
+        // Create directory if it doesn't exist
+        if (!File::exists($pictureFolder)) {
+            if (!File::makeDirectory($pictureFolder, 0775, true)) {
+                return response()->json(['error' => 'Unable to create directory.'], 500);
+            }
+        }
+    
+        // Move the new picture to the directory, replacing the old one if it exists
+        $newPicture->move($pictureFolder, $pictureName);
+    
+        return $newPicture;
     }
 
     public function update()

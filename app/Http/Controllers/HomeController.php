@@ -54,8 +54,8 @@ class HomeController extends Controller
         $getAllTraining = SpecialTraining::getAllTraining($user->id);
         //physical
         $userPhysical = Physical::userPhysical($user->id);
-        $userPft = Physical_pft::userPft($user->id);
-        $userPicture = Physical_picture::userPicture($user->id);
+        $userPft = Physical_pft::userPft($user->id)->get();
+        $userPicture = Physical_picture::userPicture($user->id)->get();
         
         return view('home', compact(
             'user',
