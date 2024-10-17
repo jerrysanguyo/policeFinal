@@ -13,7 +13,7 @@
     </div>
     <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-12">
-            <div class="card border shadow">
+            <div class="card border shadow" style="height: 500px">
                 <div class="card-body">
                     <span class="fs-5">I. General information:</span>
                     <div class="mt-3 row">
@@ -88,7 +88,7 @@
         <div class="col-lg-8 col-md-6 col-sm-12">
             <div class="row">
                 <div class="col-lg-6 col-md-12 col-sm-12">
-                    <div class="card border shadow">
+                    <div class="card border shadow overflow-auto" style="height:500px;">
                         <div class="card-body">
                             <span class="fs-5">II. Mandatory course:</span>
                             <div class="mt-3 row">
@@ -173,7 +173,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12">
-                    <div class="card border shadow">
+                    <div class="card border shadow overflow-auto" style="height:500px">
                         <div class="card-body">
                             <span class="fs-5">III. Training course:</span>
                             <div class="row">
@@ -225,12 +225,103 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-3">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="card border shadow">
-                        <div class="card-body">
-                            <span class="fs-5">IV. Physical fitness training:</span>
+        </div>
+    </div>
 
+    <div class="row mt-3">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="card border shadow" style="height:500px;">
+                <div class="card-body">
+                    <span class="fs-5">IV. Physical fitness training:</span>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                            <div class="mt-3 row">
+                                <label for="bmi_result" class="col-sm-5 col-form-label">Bmi result:</label>
+                                <div class="col-sm-7">
+                                    <input type="text" readonly class="form-control-plaintext" id="bmi_result" value="{{ $account->physical->bmi_result }}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label for="bmi_category" class="col-sm-5 col-form-label">Bmi category:</label>
+                                <div class="col-sm-7">
+                                    <input type="text" readonly class="form-control-plaintext" id="bmi_category" value="{{ $account->physical->bmi->name }}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label for="waist" class="col-sm-5 col-form-label">Waist:</label>
+                                <div class="col-sm-7">
+                                    <input type="text" readonly class="form-control-plaintext" id="waist" value="{{ $account->physical->waist }}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label for="hip" class="col-sm-5 col-form-label">Hip:</label>
+                                <div class="col-sm-7">
+                                    <input type="text" readonly class="form-control-plaintext" id="hip" value="{{ $account->physical->hip }}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label for="wrist" class="col-sm-5 col-form-label">Wrist:</label>
+                                <div class="col-sm-7">
+                                    <input type="text" readonly class="form-control-plaintext" id="wrist" value="{{ $account->physical->wrist }}">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label for="height" class="col-sm-5 col-form-label">Height:</label>
+                                <div class="col-sm-7">
+                                    <input type="text" readonly class="form-control-plaintext" id="height" value="{{ $account->physical->height }}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-6 col-sm-12">
+                            <div class="row">
+                                @foreach($listOfPic as $pic)
+                                <div class="col-lg-4">
+                                    <div class="card" style="width: 13rem;">
+                                        <a href="{{ asset($pic->picture_path) }}" target="_blank">
+                                            <img src="{{ asset($pic->picture_path) }}" alt="{{ $pic->picture_name }}" class="card-img-top">
+                                        </a>
+                                        <div class="card-body">
+                                            <h5 class="card-title text-center">{{ $pic->remarks }}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-lg-12">
+                            <span class="fs-5">Pft record/s:</span>
+                            <table class="table table-striped-columns border">
+                                <thead>
+                                    <tr>
+                                        <th>Year</th>
+                                        <th>Month</th>
+                                        <th>Date of pft</th>
+                                        <th>Remarks</th>
+                                        <th>Score</th>
+                                        <th>Type</th>
+                                        <th>Pft result</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($listOfPft as $pft)
+                                    <tr>
+                                        <td>{{ $pft->year }}</td>
+                                        <td>{{ $pft->month }}</td>
+                                        <td>{{ $pft->date_pft }}</td>
+                                        <td>{{ $pft->remarks }}</td>
+                                        <td>{{ $pft->score }}</td>
+                                        <td>{{ $pft->type }}</td>
+                                        <td>
+                                            <a href="{{ asset($pft->pft_result_path) }}" target="_blank">
+                                                <button class="btn btn-primary">View</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @endforeach 
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

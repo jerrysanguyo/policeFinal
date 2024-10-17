@@ -7,6 +7,8 @@ use App\{
     Models\Course,
     Models\SpecialTraining,
     Models\SpecialCourse,
+    Models\Physical_picture,
+    Models\physical_pft,
     Http\Requests\StoreUserRequest,
     Http\Requests\UpdateUserRequest,
     DataTables\UniversalDatatable,
@@ -49,11 +51,15 @@ class AccountController extends Controller
     {
         $listOfCourse = Course::getAllCourse($account->id);
         $listOfSpecial = SpecialCourse::getAllSpecial();
+        $listOfPic = Physical_picture::userPicture($account->id)->get();
+        $listOfPft = Physical_pft::userPft($account->id)->get();
         
         return view('account.details', compact(
             'account', 
             'listOfCourse', 
-            'listOfSpecial'
+            'listOfSpecial',
+            'listOfPic',
+            'listOfPft',
         ));
     }
     

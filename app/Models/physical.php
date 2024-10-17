@@ -24,7 +24,12 @@ class Physical extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-    // get 1 record.
+
+    public function bmi()
+    {
+        return $this->belongsTo(Bmi::class, 'bmi_category');
+    }
+    
     public static function userPhysical($userId)
     {
         return self::where('user_id', $userId)->first();
