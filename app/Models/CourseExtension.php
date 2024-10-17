@@ -24,4 +24,9 @@ class CourseExtension extends Model
     {
         return self::where('user_id', $userId)->first();
     }
+
+    public function highestTraining()
+    {
+        return $this->belongsTo(Program::class, 'high_training');
+    }
 }

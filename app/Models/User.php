@@ -49,7 +49,7 @@ class User extends Authenticatable
 
     public function course_extn()
     {
-        return $this->hasOne(Course_extension::class);
+        return $this->hasOne(CourseExtension::class);
     }
 
     public function special()

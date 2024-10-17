@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\{
     Models\User,
+    Models\Course,
+    Models\SpecialTraining,
+    Models\SpecialCourse,
     Http\Requests\StoreUserRequest,
     Http\Requests\UpdateUserRequest,
     DataTables\UniversalDatatable,
@@ -44,9 +47,16 @@ class AccountController extends Controller
     
     public function show(User $account)
     {
-        return view('account.details', 
-                compact('account'));
+        $listOfCourse = Course::getAllCourse($account->id);
+        $listOfSpecial = SpecialCourse::getAllSpecial();
+        
+        return view('account.details', compact(
+            'account', 
+            'listOfCourse', 
+            'listOfSpecial'
+        ));
     }
+    
 
     public function edit(User $account)
     {

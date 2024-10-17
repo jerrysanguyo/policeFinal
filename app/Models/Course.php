@@ -29,4 +29,9 @@ class Course extends Model
     {
         return self::where('user_id', $userId)->get();
     }
+
+    public function program()
+    {
+        return $this->belongsTo(Program::class, 'program_id');
+    }
 }

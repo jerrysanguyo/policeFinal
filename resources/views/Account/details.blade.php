@@ -12,191 +12,225 @@
         </a>
     </div>
     <div class="row">
-        <div class="col-lg-6">
-            <div class="card shadow border">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card border shadow">
                 <div class="card-body">
-                    <span class="fs-4">Personal information:</span>
+                    <span class="fs-5">I. General information:</span>
                     <div class="mt-3 row">
-                        <label for="name" class="col-sm-3 col-form-label">Full name:</label>
-                        <div class="col-sm-9">
+                        <label for="name" class="col-sm-4 col-form-label">Full name:</label>
+                        <div class="col-sm-8">
                             <input type="text" readonly class="form-control-plaintext" id="name" value="{{ $account->first_name }} {{ $account->middle_name }} {{ $account->last_name }} ">
                         </div>
                     </div>
                     <div class="row">
-                        <label for="Email" class="col-sm-3 col-form-label">Email:</label>
-                        <div class="col-sm-9">
-                            <input type="text" readonly class="form-control-plaintext" id="Email" value="{{ $account->email }}">
+                        <label for="rank" class="col-sm-4 col-form-label">Rank:</label>
+                        <div class="col-sm-8">
+                            <input type="text" readonly class="form-control-plaintext" id="rank" value="{{ $account->information->rank->name ?? 'N/A' }}">
                         </div>
                     </div>
                     <div class="row">
-                        <label for="mobile_number" class="col-sm-3 col-form-label">Mobile number:</label>
-                        <div class="col-sm-9">
-                            <input type="text" readonly class="form-control-plaintext" id="mobile_number" value="{{ $account->mobile_number }}">
+                        <label for="qlfr" class="col-sm-4 col-form-label">Qlfr:</label>
+                        <div class="col-sm-8">
+                            <input type="text" readonly class="form-control-plaintext" id="qlfr" value="{{ $account->information->qlfr ?? 'N/A' }}">
                         </div>
                     </div>
                     <div class="row">
-                        <label for="bday" class="col-sm-3 col-form-label">Birthdate:</label>
-                        <div class="col-sm-9">
-                            <input type="text" readonly class="form-control-plaintext" id="bday" value="{{ $account->userInfo->birthdate ?? 'N/A' }}">
+                        <label for="badge_number" class="col-sm-4 col-form-label">Badge number:</label>
+                        <div class="col-sm-8">
+                            <input type="text" readonly class="form-control-plaintext" id="badge_number" value="{{ $account->information->badge_number ?? 'N/A' }}">
                         </div>
                     </div>
                     <div class="row">
-                        <label for="age" class="col-sm-3 col-form-label">Age:</label>
-                        <div class="col-sm-9">
-                            <input type="text" readonly class="form-control-plaintext" id="age" value="{{ $account->userInfo->age ?? 'N/A' }}">
+                        <label for="gender" class="col-sm-4 col-form-label">Gender:</label>
+                        <div class="col-sm-8">
+                            <input type="text" readonly class="form-control-plaintext" id="gender" value="{{ $account->information->gender ?? 'N/A' }}">
                         </div>
                     </div>
                     <div class="row">
-                        <label for="Height" class="col-sm-3 col-form-label">Height:</label>
-                        <div class="col-sm-9">
-                            <input type="text" readonly class="form-control-plaintext" id="Height" value="{{ $account->userInfo->height ?? 'N/A' }}">
+                        <label for="birthdate" class="col-sm-4 col-form-label">Birthdate:</label>
+                        <div class="col-sm-8">
+                            <input type="text" readonly class="form-control-plaintext" id="birthdate" value="{{ $account->information->birthdate ?? 'N/A' }}">
                         </div>
                     </div>
                     <div class="row">
-                        <label for="Weight" class="col-sm-3 col-form-label">Weight:</label>
-                        <div class="col-sm-9">
-                            <input type="text" readonly class="form-control-plaintext" id="Weight" value="{{ $account->userInfo->weight ?? 'N/A' }}">
+                        <label for="age" class="col-sm-4 col-form-label">Age:</label>
+                        <div class="col-sm-8">
+                            <input type="text" readonly class="form-control-plaintext" id="age" value="{{ $account->information->age ?? 'N/A' }}">
                         </div>
                     </div>
                     <div class="row">
-                        <label for="Waist" class="col-sm-3 col-form-label">Waist:</label>
-                        <div class="col-sm-9">
-                            <input type="text" readonly class="form-control-plaintext" id="Waist" value="{{ $account->userInfo->waist ?? 'N/A' }}">
+                        <label for="office" class="col-sm-4 col-form-label">Office:</label>
+                        <div class="col-sm-8">
+                            <input type="text" readonly class="form-control-plaintext" id="office" value="{{ $account->information->office->name ?? 'N/A' }}">
                         </div>
                     </div>
                     <div class="row">
-                        <label for="Hip" class="col-sm-3 col-form-label">Hip:</label>
-                        <div class="col-sm-9">
-                            <input type="text" readonly class="form-control-plaintext" id="Hip" value="{{ $account->userInfo->hip ?? 'N/A' }}">
+                        <label for="shift" class="col-sm-4 col-form-label">Shift:</label>
+                        <div class="col-sm-8">
+                            <input type="text" readonly class="form-control-plaintext" id="shift" value="{{ $account->information->shift ?? 'N/A' }}">
                         </div>
                     </div>
                     <div class="row">
-                        <label for="Wrist" class="col-sm-3 col-form-label">Wrist:</label>
-                        <div class="col-sm-9">
-                            <input type="text" readonly class="form-control-plaintext" id="Wrist" value="{{ $account->userInfo->wrist ?? 'N/A' }}">
+                        <label for="entered_service" class="col-sm-4 col-form-label">Entered service:</label>
+                        <div class="col-sm-8">
+                            <input type="text" readonly class="form-control-plaintext" id="entered_service" value="{{ $account->information->entered_service ?? 'N/A' }}">
                         </div>
                     </div>
                     <div class="row">
-                        <label for="BMI result" class="col-sm-3 col-form-label">BMI result:</label>
-                        <div class="col-sm-9">
-                            <input type="text" readonly class="form-control-plaintext" id="BMI result" value="{{ $account->userInfo->bmi_result ?? 'N/A' }}">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <label for="BMI category" class="col-sm-3 col-form-label">BMI category:</label>
-                        <div class="col-sm-9">
-                            <input type="text" readonly class="form-control-plaintext" id="BMI category" value="{{ $account->userInfo->bmi_category ?? 'N/A' }}">
+                        <label for="last_promotion" class="col-sm-4 col-form-label">last promotion:</label>
+                        <div class="col-sm-8">
+                            <input type="text" readonly class="form-control-plaintext" id="last_promotion" value="{{ $account->information->last_promotion ?? 'N/A' }}">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-8 col-md-6 col-sm-12">
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="card shadow border">
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="card border shadow">
                         <div class="card-body">
-                            <span class="fs-4">Service information:</span>
-                            <div class="row">
-                                <label for="rank" class="col-form-label col-sm-6">Rank:</label>
-                                <div class="col-sm-6">
-                                    <input type="text" readonly id="rank" class="form-control-plaintext" value="{{ $account->userService->rank ?? 'N/A' }}">
+                            <span class="fs-5">II. Mandatory course:</span>
+                            <div class="mt-3 row">
+                                <label for="high_training" class="col-sm-4 col-form-label">Highest mandatory training:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" readonly class="form-control-plaintext" id="high_training" value="{{ $account->course_extn->highestTraining->name ?? 'N/A' }}">
                                 </div>
                             </div>
                             <div class="row">
-                                <label for="QLRF" class="col-form-label col-sm-6">QLRF:</label>
-                                <div class="col-sm-6">
-                                    <input type="text" readonly id="QLRF" class="form-control-plaintext" value="{{ $account->userService->qlrf ?? 'N/A' }}">
+                                <label for="date_graduation" class="col-sm-4 col-form-label">Date graduated:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" readonly class="form-control-plaintext" id="date_graduation" value="{{ $account->course_extn->date_graduation ?? 'N/A' }}">
                                 </div>
                             </div>
                             <div class="row">
-                                <label for="badge_number" class="col-form-label col-sm-6">Badge number:</label>
-                                <div class="col-sm-6">
-                                    <input type="text" readonly id="badge_number" class="form-control-plaintext" value="{{ $account->userService->badge_number ?? 'N/A' }}">
+                                <label for="order_merit" class="col-sm-4 col-form-label">Order of merit:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" readonly class="form-control-plaintext" id="order_merit" value="{{ $account->course_extn->order_merit ?? 'N/A' }}">
                                 </div>
                             </div>
                             <div class="row">
-                                <label for="entered_service" class="col-form-label col-sm-6">Entered service:</label>
-                                <div class="col-sm-6">
-                                    <input type="text" readonly id="entered_service" class="form-control-plaintext" value="{{ $account->userService->entered_service ?? 'N/A' }}">
+                                <label for="ftoc" class="col-sm-4 col-form-label">FTOC:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" readonly class="form-control-plaintext" id="ftoc" value="{{ $account->course_extn->ftoc ?? 'N/A' }}">
                                 </div>
                             </div>
                             <div class="row">
-                                <label for="last_promotion" class="col-form-label col-sm-6">Last promotion:</label>
-                                <div class="col-sm-6">
-                                    <input type="text" readonly id="last_promotion" class="form-control-plaintext" value="{{ $account->userService->last_promotion ?? 'N/A' }}">
+                                <label for="qe_result" class="col-sm-4 col-form-label">QE result:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" readonly class="form-control-plaintext" id="qe_result" value="{{ $account->course_extn->qe_result ?? 'N/A' }}">
                                 </div>
                             </div>
                             <div class="row">
-                                <label for="unit" class="col-form-label col-sm-6">Unit:</label>
-                                <div class="col-sm-6">
-                                    <input type="text" readonly id="unit" class="form-control-plaintext" value="{{ $account->userService->unit ?? 'N/A' }}">
+                                <label for="date_qualifying" class="col-sm-4 col-form-label">Date of QE:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" readonly class="form-control-plaintext" id="date_qualifying" value="{{ $account->course_extn->date_qualifying ?? 'N/A' }}">
                                 </div>
+                            </div>
+                            <div class="row">
+                                <span class="fs-6">Program/s:</span>
+                                @foreach($listOfCourse as $course)
+                                    <div class="accordion accordion-flush" id="accordionFlushCourse">
+                                        <div class="accordion-item border">
+                                            <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$course->program_id}}" aria-expanded="false" aria-controls="flush-collapse{{$course->program_id}}">
+                                                {{ $course->program->name }}
+                                            </button>
+                                            </h2>
+                                            <div id="flush-collapse{{$course->program_id}}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushCourse">
+                                                <div class="accordion-body">
+                                                    <div class="row">
+                                                        <label for="class_number" class="col-sm-4 col-form-label">Class number:</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" readonly class="form-control-plaintext" id="class_number" value="{{ $course->class_number ?? 'N/A' }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <label for="start_date" class="col-sm-4 col-form-label">Start date:</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" readonly class="form-control-plaintext" id="start_date" value="{{ $course->start_date ?? 'N/A' }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <label for="end_date" class="col-sm-4 col-form-label">End date:</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" readonly class="form-control-plaintext" id="end_date" value="{{ $course->end_date ?? 'N/A' }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <label for="ranking" class="col-sm-4 col-form-label">Ranking:</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" readonly class="form-control-plaintext" id="ranking" value="{{ $course->ranking ?? 'N/A' }}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="card shadow border">
+                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="card border shadow">
                         <div class="card-body">
-                            <span class="fs-4">Traning Information:</span>
+                            <span class="fs-5">III. Training course:</span>
                             <div class="row">
-                                <label for="mandatory_training" class="col-form-label col-sm-6">Mandatory training:</label>
-                                <div class="col-sm-6">
-                                    <input type="text" readonly id="mandatory_training" class="form-control-plaintext" value="{{ $account->userTraining->mandatory_training ?? 'N/A' }}">
+                            @foreach($listOfSpecial as $special)
+                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                                    <div class="accordion-item border">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" 
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ $special->id }}{{ $special->id }}" 
+                                                    aria-expanded="false" aria-controls="flush-collapse{{ $special->id }}{{ $special->id }}">
+                                                {{ $special->name ?? 'Course Name Not Available' }}
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapse{{ $special->id }}{{ $special->id }}" class="accordion-collapse collapse" 
+                                            data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                @php
+                                                    $correspondingCourses = \App\Models\SpecialTraining::perCourse($special->id, $account->id);
+                                                @endphp
+                                                
+                                                @foreach($correspondingCourses as $course)
+                                                    <div class="row">
+                                                        <label class="col-sm-4 col-form-label">Traning:</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" readonly class="form-control-plaintext" value="{{ $course->training->name ?? 'N/A' }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <label class="col-sm-4 col-form-label">Class number:</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" readonly class="form-control-plaintext" value="{{ $course->class_number ?? 'N/A' }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <label class="col-sm-4 col-form-label">Date:</label>
+                                                        <div class="col-sm-8">
+                                                            <input type="text" readonly class="form-control-plaintext" value="{{ $course->start_date ?? 'N/A' }} - {{ $course->end_date ?? 'N/A' }}">
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <label for="date_graduation" class="col-form-label col-sm-6">Date graduated:</label>
-                                <div class="col-sm-6">
-                                    <input type="text" readonly id="date_graduation" class="form-control-plaintext" value="{{ $account->userTraining->date_graduation ?? 'N/A' }}">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <label for="order_of_merit" class="col-form-label col-sm-6">Order of merit:</label>
-                                <div class="col-sm-6">
-                                    <input type="text" readonly id="order_of_merit" class="form-control-plaintext" value="{{ $account->userTraining->order_of_merit ?? 'N/A' }}">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <label for="fotc" class="col-form-label col-sm-6">FOTC:</label>
-                                <div class="col-sm-6">
-                                    <input type="text" readonly id="fotc" class="form-control-plaintext" value="{{ $account->userTraining->fotc ?? 'N/A' }}">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <label for="qe_result" class="col-form-label col-sm-6">QE result:</label>
-                                <div class="col-sm-6">
-                                    <input type="text" readonly id="qe_result" class="form-control-plaintext" value="{{ $account->userTraining->qe_result ?? 'N/A' }}">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <label for="date_qualifying_exam" class="col-form-label col-sm-6">Date of qualifying exam:</label>
-                                <div class="col-sm-6">
-                                    <input type="text" readonly id="date_qualifying_exam" class="form-control-plaintext" value="{{ $account->userTraining->date_qualifying_exam ?? 'N/A' }}">
-                                </div>
+                            @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row mt-3">
-                <div class="col-lg-12">
-                    <div class="card shadow border">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="card border shadow">
                         <div class="card-body">
-                            <span class="fs-4">Special Training information:</span>
-                            <div class="row">
-                                <label for="course" class="col-form-label col-sm-6">Special course training:</label>
-                                <div class="col-sm-6">
-                                    <input type="text" readonly id="course" class="form-control-plaintext" value="{{ $account->userSpecial->special_course_training ?? 'N/A' }}">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <label for="duration" class="col-form-label col-sm-6">Duration:</label>
-                                <div class="col-sm-6">
-                                    <input type="text" readonly id="duration" class="form-control-plaintext" value="{{ $account->userSpecial->duration ?? 'N/A' }}">
-                                </div>
-                            </div>
+                            <span class="fs-5">IV. Physical fitness training:</span>
+
                         </div>
                     </div>
                 </div>

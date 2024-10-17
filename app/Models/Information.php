@@ -29,4 +29,14 @@ class Information extends Model
     {
         return self::where('user_id', $user)->first();
     }
+
+    public function rank()
+    {
+        return $this->belongsTo(Rank::class, 'rank_id');
+    }
+
+    public function office()
+    {
+        return $this->belongsTo(Office::class, 'office_id');
+    }
 }

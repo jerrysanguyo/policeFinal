@@ -29,6 +29,13 @@ class SpecialTraining extends Model
         return self::where('user_id', $userId)->get();
     }
 
+    public static function perCourse($course, $userId)
+    {
+        return self::where('admin_course', $course)
+                    ->where('user_id', $userId)
+                    ->get();
+    }
+
     public function course()
     {
         return $this->belongsTo(SpecialCourse::class, 'admin_course');
