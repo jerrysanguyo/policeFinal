@@ -15,6 +15,7 @@ use App\Http\Controllers\{
     SpecialTrainingController,
     BmiController,
     PhysicalController,
+    ReportController,
 };
 
 Route::get('/', function () {
@@ -53,6 +54,9 @@ Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('supe
         ->name('physical.updatePic');
     Route::put('physical/updatePft/{physicalPft}', [PhysicalController::class, 'updatePftResult'])
         ->name('physical.updatePft');
+    //charts
+    Route::get('/users-per-program-chart', [ReportController::class, 'showUsersPerProgramChart'])
+        ->name('report.programChart');
 });
 
 // admin middleware
@@ -84,6 +88,8 @@ Route::middleware(['auth', 'check.user.role'])->prefix('admin')->name('admin.')-
     ->name('physical.updatePic');
     Route::put('physical/updatePft/{physicalPft}', [PhysicalController::class, 'updatePftResult'])
         ->name('physical.updatePft');
+    //charts
+    Route::get('/users-per-program-chart', [ReportController::class, 'showUsersPerProgramChart']);
 });
 
 // user middleware

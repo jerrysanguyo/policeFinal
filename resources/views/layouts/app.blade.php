@@ -18,6 +18,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/2.0.2/js/dataTables.min.js"></script>
 
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/4f2d7302b1.js" crossorigin="anonymous"></script>
+
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <style>
@@ -65,27 +68,27 @@
                             @endphp
                             <li class="nav-item">
                                 <a href="{{ route($userRole . '.account.index') }}" class="nav-link">
-                                    Account
+                                    <i class="fa-solid fa-user me-1"></i>Account
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route($userRole . '.rank.index') }}" class="nav-link">
-                                    Rank
+                                    <i class="fa-solid fa-ranking-star me-1"></i>Rank
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route($userRole . '.office.index') }}" class="nav-link">
-                                    Office
+                                    <i class="fa-solid fa-building-shield me-1"></i>Office
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route($userRole . '.program.index') }}" class="nav-link">
-                                    Program
+                                    <i class="fa-solid fa-book me-1"></i>Program
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Special Course
+                                    <i class="fa-solid fa-walkie-talkie me-1"></i>Special Course
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="{{ route($userRole . '.special.index') }}">Special course (Main)</a></li>
@@ -94,7 +97,12 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route($userRole . '.bmi.index') }}" class="nav-link">
-                                    BMI
+                                    <i class="fa-solid fa-dumbbell me-1"></i>BMI
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route($userRole . '.report.programChart') }}" class="nav-link">
+                                    <i class="fa-solid fa-table me-1"></i>Reports
                                 </a>
                             </li>
                         @endif
