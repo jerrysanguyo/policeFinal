@@ -15,7 +15,7 @@ class ReportChartService
         $usersPerProgram = Course::getUserPerProgram();
 
         return [
-            'title' => 'Number of users per program',
+            'title' => 'Number of police officer per program',
             'labels' => $usersPerProgram->pluck('name')->toArray(), 
             'data' => $usersPerProgram->pluck('total_users')->toArray() 
         ];
@@ -26,7 +26,7 @@ class ReportChartService
         $usersPerTraining = SpecialTraining::getUserPerCourse();
 
         return [
-            'title' => 'Number of users per training',
+            'title' => 'Number of police officer per training',
             'labels' =>  $usersPerTraining->pluck('name')->toArray(),
             'data'  =>  $usersPerTraining->pluck('total_users')->toArray()
         ];

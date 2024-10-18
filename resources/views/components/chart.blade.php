@@ -35,11 +35,11 @@
             },
             yAxis: {
                 title: {
-                    text: 'Number of Users'
+                    text: 'Number of officer'
                 }
             },
             series: [{
-                name: 'Number of Users',
+                name: 'Number of officer',
                 data: data
             }]
         });
