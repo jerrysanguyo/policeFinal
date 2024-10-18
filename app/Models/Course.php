@@ -29,7 +29,8 @@ class Course extends Model
     {
         return \DB::table('programs')
             ->leftJoin('courses', 'programs.id', '=', 'courses.program_id')
-            ->select('programs.id as program_id', 'programs.name', \DB::raw('count(distinct courses.user_id) as total_users'))
+            ->select('programs.id as program_id', 'programs.name', 
+                \DB::raw('count(distinct courses.user_id) as total_users'))
             ->groupBy('programs.id', 'programs.name')
             ->get();
     }

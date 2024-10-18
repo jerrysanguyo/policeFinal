@@ -3,22 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Services\CourseChartService;
+use App\Services\ReportChartService;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
-    protected $chartService;
+    protected $reportChart;
 
-    public function __construct(CourseChartService $chartService)
+    public function __construct(ReportChartService $reportChart)
     {
-        $this->chartService = $chartService;
+        $this->reportChart = $reportChart;
     }
 
     public function showUsersPerProgramChart()
     {
-        $usersPerProgram = $this->chartService->usersPerProgram();
+        $usersPerProgram = $this->reportChart->usersPerProgram();
+        $usersPerTraining = $this->reportChart->usersPerTraining();
 
-        return view('components.chart', compact('usersPerProgram'));
+        return view('components.chart', compact(
+            'usersPerProgram',
+            'usersPerTraining'
+        ));
     }
 }

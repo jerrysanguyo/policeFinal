@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Services;
+
+use App\Models\{
+    SpecialTraining,
+    Course,
+};
+use ConsoleTVs\Charts\Classes\Highcharts\Chart;
+
+class ReportChartService
+{
+    public function usersPerProgram()
+    {
+        $usersPerProgram = Course::getUserPerProgram();
+
+        return [
+            'title' => 'Number of users per program',
+            'labels' => $usersPerProgram->pluck('name')->toArray(), 
+            'data' => $usersPerProgram->pluck('total_users')->toArray() 
+        ];
+    }
+
+    public function usersPerTraining()
+    {
+        $usersPerTraining = SpecialTraining::getUserPerCourse();
+
+        return [
+            'title' => 'Number of users per training',
+            'labels' =>  $usersPerTraining->pluck('name')->toArray(),
+            'data'  =>  $usersPerTraining->pluck('total_users')->toArray()
+        ];
+    }
+}
