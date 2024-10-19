@@ -68,6 +68,17 @@ class SpecialTraining extends Model
             ->get();
     }
 
+    public static function getUserOperation()
+    {
+        return \DB::table('special_course_extensions')
+            ->leftJoin('special_trainings', 'special_course_extensions.id', '=', 'special_trainings.admin_training')
+            ->select('special_course_extensions.id as training_id', 'special_course_extensions.name',
+                \DB::raw('count(special_trainings.user_id) as total_users')) 
+            ->where('special_trainings.admin_course', 3)
+            ->groupBy('special_course_extensions.id', 'special_course_extensions.name')
+            ->get();
+    }
+
     public function course()
     {
         return $this->belongsTo(SpecialCourse::class, 'admin_course');

@@ -46,7 +46,7 @@
                 <div class="col-lg-4">
                     <div class="card border shadow">
                         <div class="card-body">
-                            
+                            <div id="chart-operation-container"></div>
                         </div>
                     </div>
                 </div>
@@ -157,6 +157,17 @@
             {!! json_encode($userIntelligence["labels"]) !!}, 
             {!! json_encode($userIntelligence["data"]) !!},
             550,
+            300
+        );
+
+        //Render the chart for user operations
+        renderChart(
+            'chart-operation-container', 
+            '{{ $userOperation["chartType"] }}', 
+            '{{ $userOperation["title"] }}', 
+            {!! json_encode($userOperation["labels"]) !!}, 
+            {!! json_encode($userOperation["data"]) !!},
+            430,
             300
         );
     });

@@ -56,4 +56,16 @@ class ReportChartService
             'data'  =>  $userIntelligence->pluck('total_users')->toArray()
         ]; 
     }
+
+    public function userOperation()
+    {
+        $userOperation = SpecialTraining::getUserOperation();
+
+        return [
+            'title' => 'Operational Course',
+            'chartType' =>  'pie',
+            'labels' =>  $userOperation->pluck('name')->toArray(),
+            'data'  =>  $userOperation->pluck('total_users')->toArray()
+        ];
+    }
 }

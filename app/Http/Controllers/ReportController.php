@@ -21,12 +21,14 @@ class ReportController extends Controller
         $usersPerCourse = $this->reportChart->usersPerCourse();
         $userInvestigation = $this->reportChart->userInvestigation();
         $userIntelligence = $this->reportChart->userIntelligence();
+        $userOperation = $this->reportChart->userOperation();
 
         return view('components.chart', compact(
             'usersPerProgram',
             'usersPerCourse',
             'userInvestigation',
-            'userIntelligence'
+            'userIntelligence',
+            'userOperation',
         ));
     }
 }
