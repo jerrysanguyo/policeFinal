@@ -16,6 +16,7 @@ class ReportChartService
 
         return [
             'title' => 'Number of police officer per program',
+            'chartType'  =>  'bar',
             'labels' => $usersPerProgram->pluck('name')->toArray(), 
             'data' => $usersPerProgram->pluck('total_users')->toArray() 
         ];
@@ -27,6 +28,7 @@ class ReportChartService
 
         return [
             'title' => 'Number of police officer per training',
+            'chartType' =>  'bar',
             'labels' =>  $usersPerTraining->pluck('name')->toArray(),
             'data'  =>  $usersPerTraining->pluck('total_users')->toArray()
         ];
