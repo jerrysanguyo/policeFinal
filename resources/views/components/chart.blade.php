@@ -53,14 +53,14 @@
                 <div class="col-lg-4">
                     <div class="card border shadow">
                         <div class="card-body">
-                            
+                        <div id="chart-administrative-container"></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="card border shadow">
                         <div class="card-body">
-                            
+                            <div id="chart-pcr-container"></div>
                         </div>
                     </div>
                 </div>
@@ -167,6 +167,28 @@
             '{{ $userOperation["title"] }}', 
             {!! json_encode($userOperation["labels"]) !!}, 
             {!! json_encode($userOperation["data"]) !!},
+            430,
+            300
+        );
+
+        //Render the chart for user administrative
+        renderChart(
+            'chart-administrative-container', 
+            '{{ $userAdministrative["chartType"] }}', 
+            '{{ $userAdministrative["title"] }}', 
+            {!! json_encode($userAdministrative["labels"]) !!}, 
+            {!! json_encode($userAdministrative["data"]) !!},
+            430,
+            300
+        );
+
+        //Render the chart for user Pcr
+        renderChart(
+            'chart-pcr-container', 
+            '{{ $userPcr["chartType"] }}', 
+            '{{ $userPcr["title"] }}', 
+            {!! json_encode($userPcr["labels"]) !!}, 
+            {!! json_encode($userPcr["data"]) !!},
             430,
             300
         );

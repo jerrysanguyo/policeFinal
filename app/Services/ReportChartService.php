@@ -68,4 +68,28 @@ class ReportChartService
             'data'  =>  $userOperation->pluck('total_users')->toArray()
         ];
     }
+
+    public function userAdministrative()
+    {
+        $userAdministrative = SpecialTraining::getUserAdministrative();
+
+        return [
+            'title' => 'Administrative Course',
+            'chartType' =>  'pie',
+            'labels' =>  $userAdministrative->pluck('name')->toArray(),
+            'data'  =>  $userAdministrative->pluck('total_users')->toArray()
+        ];
+    }
+
+    public function userPcr()
+    {
+        $userPcr = SpecialTraining::getUserPcr();
+
+        return [
+            'title' => 'Pcr Course',
+            'chartType' =>  'pie',
+            'labels' =>  $userPcr->pluck('name')->toArray(),
+            'data'  =>  $userPcr->pluck('total_users')->toArray()
+        ];
+    }
 }

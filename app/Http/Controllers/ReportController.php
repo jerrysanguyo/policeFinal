@@ -22,6 +22,8 @@ class ReportController extends Controller
         $userInvestigation = $this->reportChart->userInvestigation();
         $userIntelligence = $this->reportChart->userIntelligence();
         $userOperation = $this->reportChart->userOperation();
+        $userAdministrative = $this->reportChart->userAdministrative();
+        $userPcr = $this->reportChart->userPcr();
 
         return view('components.chart', compact(
             'usersPerProgram',
@@ -29,6 +31,8 @@ class ReportController extends Controller
             'userInvestigation',
             'userIntelligence',
             'userOperation',
+            'userAdministrative',
+            'userPcr',
         ));
     }
 }
