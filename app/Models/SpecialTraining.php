@@ -40,9 +40,31 @@ class SpecialTraining extends Model
     {
         return \DB::table('special_courses')
             ->leftJoin('special_trainings', 'special_courses.id', '=' ,'special_trainings.admin_course')
-            ->select('special_courses.id as training_id', 'special_courses.name', 
+            ->select('special_courses.id as course_id', 'special_courses.name', 
                 \DB::raw('count(special_trainings.user_id) as total_users'))
             ->groupBy('special_courses.id', 'special_courses.name')
+            ->get();
+    }
+
+    public static function getUserInvestigation()
+    {
+        return \DB::table('special_course_extensions')
+            ->leftJoin('special_trainings', 'special_course_extensions.id', '=', 'special_trainings.admin_training')
+            ->select('special_course_extensions.id as training_id', 'special_course_extensions.name',
+                \DB::raw('count(special_trainings.user_id) as total_users')) 
+            ->where('special_trainings.admin_course', 1)
+            ->groupBy('special_course_extensions.id', 'special_course_extensions.name')
+            ->get();
+    }
+
+    public static function getUserIntelligence()
+    {
+        return \DB::table('special_course_extensions')
+            ->leftJoin('special_trainings', 'special_course_extensions.id', '=', 'special_trainings.admin_training')
+            ->select('special_course_extensions.id as training_id', 'special_course_extensions.name',
+                \DB::raw('count(special_trainings.user_id) as total_users')) 
+            ->where('special_trainings.admin_course', 2)
+            ->groupBy('special_course_extensions.id', 'special_course_extensions.name')
             ->get();
     }
 

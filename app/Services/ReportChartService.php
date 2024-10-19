@@ -22,15 +22,38 @@ class ReportChartService
         ];
     }
 
-    public function usersPerTraining()
+    public function usersPerCourse()
     {
-        $usersPerTraining = SpecialTraining::getUserPerCourse();
+        $usersPerCourse = SpecialTraining::getUserPerCourse();
 
         return [
-            'title' => 'Number of police officer per training',
+            'title' => 'Number of police officer per course',
             'chartType' =>  'bar',
-            'labels' =>  $usersPerTraining->pluck('name')->toArray(),
-            'data'  =>  $usersPerTraining->pluck('total_users')->toArray()
+            'labels' =>  $usersPerCourse->pluck('name')->toArray(),
+            'data'  =>  $usersPerCourse->pluck('total_users')->toArray()
         ];
+    }
+    public function userInvestigation()
+    {
+        $userInvestigation = SpecialTraining::getUserInvestigation();
+
+        return [
+            'title' => 'Investigation Course',
+            'chartType' =>  'pie',
+            'labels' =>  $userInvestigation->pluck('name')->toArray(),
+            'data'  =>  $userInvestigation->pluck('total_users')->toArray()
+        ]; 
+    }
+
+    public function userIntelligence()
+    {
+        $userIntelligence = SpecialTraining::getUserIntelligence();
+
+        return [
+            'title' => 'Intelligence Course',
+            'chartType' =>  'pie',
+            'labels' =>  $userIntelligence->pluck('name')->toArray(),
+            'data'  =>  $userIntelligence->pluck('total_users')->toArray()
+        ]; 
     }
 }

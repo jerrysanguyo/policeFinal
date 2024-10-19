@@ -18,11 +18,15 @@ class ReportController extends Controller
     public function showUsersPerProgramChart()
     {
         $usersPerProgram = $this->reportChart->usersPerProgram();
-        $usersPerTraining = $this->reportChart->usersPerTraining();
+        $usersPerCourse = $this->reportChart->usersPerCourse();
+        $userInvestigation = $this->reportChart->userInvestigation();
+        $userIntelligence = $this->reportChart->userIntelligence();
 
         return view('components.chart', compact(
             'usersPerProgram',
-            'usersPerTraining'
+            'usersPerCourse',
+            'userInvestigation',
+            'userIntelligence'
         ));
     }
 }
