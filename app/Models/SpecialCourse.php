@@ -32,4 +32,22 @@ class SpecialCourse extends Model
     {
         return $this->belongsTo(User::class, 'updated_by');
     }
+
+    public function courseExtn()
+    {
+        return $this->hasMany(SpecialCourseExtension::class, 'special_id');
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($special) {
+            if ($special->courseExtn) {
+                $special->courseExtn->each(function ($extension) {
+                    $extension->delete();
+                });
+            }
+        });
+    }
 }

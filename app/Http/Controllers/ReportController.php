@@ -30,7 +30,7 @@ class ReportController extends Controller
         // $userAdministrative = $this->reportChart->userAdministrative();
         // $userPcr = $this->reportChart->userPcr();
 
-        return view('components.chart', compact(
+        return view('report.chart', compact(
             'usersPerProgram',
             'usersPerCourse',
             'listOfCourse',
