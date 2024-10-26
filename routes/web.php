@@ -55,8 +55,11 @@ Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('supe
     Route::put('physical/updatePft/{physicalPft}', [PhysicalController::class, 'updatePftResult'])
         ->name('physical.updatePft');
     //charts
-    Route::get('/users-per-program-chart', [ReportController::class, 'showUsersPerProgramChart'])
+    Route::get('/Charts', [ReportController::class, 'showUsersPerProgramChart'])
         ->name('report.programChart');
+    //userTraining charts dynamic
+    Route::get('/report/course-data', [ReportController::class, 'getCourseData'])
+        ->name('report.courseData');
 });
 
 // admin middleware
