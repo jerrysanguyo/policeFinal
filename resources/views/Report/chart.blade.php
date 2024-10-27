@@ -8,6 +8,18 @@
             <div class="card border shadow" style="height: 100%">
                 <div class="card-body">
                     <div id="chart-program-container"></div>
+                    <div class="col-lg-12">
+                        <form action="{{ route('superadmin.export.userProgram') }}" method="post">
+                            @csrf
+                            <label for="program_id" class="form-label">Program:</label>
+                            <select name="program_id" id="program_id" class="form-select">
+                                @foreach($listOfProgram as $program)
+                                <option value="{{ $program->id }}">{{ $program->name }}</option>
+                                @endforeach
+                            </select>
+                            <input type="submit" value="export" class="btn btn-primary mt-1">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

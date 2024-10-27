@@ -16,6 +16,7 @@ use App\Http\Controllers\{
     BmiController,
     PhysicalController,
     ReportController,
+    ExportController,
 };
 
 Route::get('/', function () {
@@ -60,6 +61,9 @@ Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('supe
     //userTraining charts dynamic
     Route::get('/report/course-data', [ReportController::class, 'getCourseData'])
         ->name('report.courseData');
+    //Export user program
+    Route::post('/export/user-program', [ExportController::class, 'exportUsers'])
+        ->name('export.userProgram');
 });
 
 // admin middleware

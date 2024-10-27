@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\{
     Models\User,
     Models\SpecialCourse,
+    Models\Program,
     Services\ReportChartService,
 };
 use Illuminate\Http\Request;
@@ -23,6 +24,7 @@ class ReportController extends Controller
         $usersPerProgram = $this->reportChart->usersPerProgram();
         $usersPerCourse = $this->reportChart->usersPerCourse();
         $listOfCourse = SpecialCourse::getAllSpecial();
+        $listOfProgram = Program::getAllProgram();
         // uncomment if they want to see one by one graph.
         // $userInvestigation = $this->reportChart->userInvestigation();
         // $userIntelligence = $this->reportChart->userIntelligence();
@@ -34,6 +36,7 @@ class ReportController extends Controller
             'usersPerProgram',
             'usersPerCourse',
             'listOfCourse',
+            'listOfProgram',
             // uncomment if they want to see one by one graph
             // 'userInvestigation',
             // 'userIntelligence',
