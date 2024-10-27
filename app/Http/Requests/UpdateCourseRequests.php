@@ -16,8 +16,8 @@ class UpdateCourseRequests extends FormRequest
         return [
             'program_id'    => ['numeric', 'exists:programs,id'],  
             'class_number'  => ['string', 'required', 'max:255'],  
-            'start_date'          =>  ['date', 'required'],
-            'end_date'            =>  ['date', 'required'],      
+            'start_date'    => ['date', 'required'],
+            'end_date'      => ['date', 'required'],      
             'ranking'       => ['numeric', 'required'],
         ];
     }

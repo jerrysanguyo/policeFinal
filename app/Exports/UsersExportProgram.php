@@ -3,9 +3,11 @@
 namespace App\Exports;
 
 use App\Models\User;
-use Maatwebsite\Excel\Concerns\FromQuery;
-use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\{
+    Excel\Concerns\FromQuery,
+    Excel\Concerns\WithHeadings,
+    Excel\Concerns\WithMapping,
+};
 
 class UsersExportProgram implements FromQuery, WithHeadings, WithMapping
 {

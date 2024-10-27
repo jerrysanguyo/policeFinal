@@ -43,7 +43,7 @@ class CourseService
             'program_id'   => $data['program_id'],
             'class_number' => $data['class_number'],
             'start_date'   => $data['start_date'],
-            'end_date'     => $data['start_date'],
+            'end_date'     => $data['end_date'],
             'ranking'      => $data['ranking'],
         ]);
 

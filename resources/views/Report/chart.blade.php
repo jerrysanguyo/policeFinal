@@ -30,6 +30,19 @@
             <div class="card border shadow" style="height: 100%">
                 <div class="card-body">
                     <div id="chart-course-container"></div>
+                    <div class="col-lg-12">
+                        <form action="{{ route('superadmin.export.userCourse') }}" method="post">
+                            @csrf
+                            <label for="admin_course" class="form-label">Course:</label>
+                            <select name="admin_course" id="admin_course" class="form-select mb-3">
+                                <option value="">Select Course</option>
+                                @foreach($listOfCourse as $course)
+                                    <option value="{{ $course->id }}">{{ $course->name }}</option>
+                                @endforeach
+                            </select>
+                            <input type="submit" value="export" class="btn btn-primary mt-1">
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

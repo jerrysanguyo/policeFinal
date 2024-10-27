@@ -61,9 +61,11 @@ Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('supe
     //userTraining charts dynamic
     Route::get('/report/course-data', [ReportController::class, 'getCourseData'])
         ->name('report.courseData');
-    //Export user program
-    Route::post('/export/user-program', [ExportController::class, 'exportUsers'])
+    //Export user
+    Route::post('/export/user-program', [ExportController::class, 'exportUsersProgram'])
         ->name('export.userProgram');
+    Route::post('/export/user-course', [ExportController::class, 'exportUsersCourse'])
+        ->name('export.userCourse');
 });
 
 // admin middleware
@@ -105,6 +107,8 @@ Route::middleware(['auth', 'check.user.role'])->prefix('user')->name('user.')->g
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard'); 
     // course & course Extension
     Route::resource('course', CourseController::class);
+    Route::resource('physical', PhysicalController::class);
+    Route::resource('training', SpecialTrainingController::class);
     Route::resource('physical', PhysicalController::class);
     Route::get('/course-extension/{courseExn}', [CourseController::class, 'courseExnUpdate'])
         ->name('courseExn.update');

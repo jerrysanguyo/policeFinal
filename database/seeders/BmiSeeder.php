@@ -11,11 +11,11 @@ class BmiSeeder extends Seeder
     public function run(): void
     {
         $bmis = [
-            'Obese3',
-            'Obese2',
-            'Obese1',
+            'Obese 3',
+            'Obese 2',
+            'Obese 1',
             'Overweight',
-            'Normalweight',
+            'Normal weight',
             'Underweight',
         ];
 
