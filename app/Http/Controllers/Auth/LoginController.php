@@ -2,28 +2,43 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\{
+    Http\Controllers\Controller,
+    Services\Auth\LoginService,
+    Http\Requests\Auth\LoginRequest,
+};
+
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    use AuthenticatesUsers;
-    
-    protected function redirectTo(): string
+    protected $loginService;
+
+    public function __construct(LoginService $loginService)
     {
-        $role = auth()->user()->role;
-
-        $routes = [
-            'admin' => route('admin.dashboard'),
-            'user' => route('user.dashboard'),
-            'superadmin' => route('superadmin.dashboard'),
-        ];
-
-        return $routes[$role] ?? route('home'); 
+        $this->loginService = $loginService;
     }
     
-    public function __construct()
+    public function login()
     {
-        $this->middleware('guest')->except('logout');
+        return view('auth.login');
+    }
+
+    public function loginCheck(LoginRequest $request)
+    {
+        $validated = $request->validated();
+
+        if ($this->loginService->login($validated)) {
+            $userRole = Auth::user()->role;
+            return redirect()->route($userRole . '.dashboard')->with('success', 'Welcome!');
+        }
+
+        return redirect()->route('login')->with('Failed', 'Invalid login credentials.');
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login')->with('success', 'You have logged out successfully!');
     }
 }

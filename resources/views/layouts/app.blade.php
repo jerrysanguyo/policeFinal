@@ -22,7 +22,8 @@
     <script src="https://kit.fontawesome.com/4f2d7302b1.js" crossorigin="anonymous"></script>
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
+    <link rel="stylesheet" href="{{ asset('build/assets/app-Co2e8z2G.css') }}">
     <style>
         .dt-input{
             margin-right: 3%;
@@ -150,6 +151,7 @@
             @yield('content')
         </main>
     </div>
+    <script src="/build/assets/app-H1p8gvK4.js"></script>
     @stack('scripts')
 </body>
 </html>

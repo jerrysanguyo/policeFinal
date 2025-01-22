@@ -20,8 +20,13 @@
                                     <span class="fs-6 mb-4">
                                         <a href="{{ route('registration') }}" class="text-decoration-none">Kindly create your account if you do not have one.</a>
                                     </span>
+                                    @if(session('success'))
+                                        <div class="alert alert-success">
+                                            {{ session('success') }}
+                                        </div>
+                                    @endif
                                 </div>
-                                <form method="POST" action="{{ route('login') }}">
+                                <form method="POST" action="{{ route('loginCheck') }}">
                                     @csrf
                                     <div class="row mb-3">
                                         <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>

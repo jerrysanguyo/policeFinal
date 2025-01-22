@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     Auth\RegisterController,
+    Auth\LoginController,
     HomeController,
     AccountController,
     RankController,
@@ -23,8 +24,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Auth::routes();
-
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/loginCheck', [LoginController::class, 'loginCheck'])->name('loginCheck');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 Route::get('/registration', [RegisterController::class, 'index'])->name('registration');
 Route::get('/admin-trainings/{courseId}', [SpecialTrainingController::class, 'getAdminTrainings'])->name('admin.trainings');

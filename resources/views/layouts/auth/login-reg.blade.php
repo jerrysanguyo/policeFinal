@@ -14,7 +14,8 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
+    <link rel="stylesheet" href="/build/assets/app-Co2e8z2G.css">
     <style>
         .btn.btn-primary {
             background-color: #727CF5;
@@ -40,5 +41,6 @@
             @yield('content')
         </main>
     </div>
+    <script src="/build/assets/app-H1p8gvK4.js"></script>
 </body>
 </html>

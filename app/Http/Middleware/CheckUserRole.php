@@ -11,20 +11,18 @@ class CheckUserRole
     public function handle(Request $request, Closure $next): Response
     {
         $user = $request->user();
-        
+
         if (!$user) {
-            return redirect()->route('login'); 
+            return redirect()->route('login.index'); 
         }
-    
-        $role = $user->role;
+
+        $rolePrefixMapping = config('role'); 
         $prefix = ltrim($request->route()->getPrefix(), '/');
-    
-        if (($role === 'superadmin' && $prefix !== 'superadmin') ||
-            ($role === 'admin' && $prefix !== 'admin') ||
-            ($role === 'user' && $prefix !== 'user')) {
-            abort(403, 'Unauthorized');
+
+        if (!isset($rolePrefixMapping[$user->role]) || $rolePrefixMapping[$user->role] !== $prefix) {
+            abort(403, 'Unauthorized'); 
         }
-    
+
         return $next($request);
     }
 }
