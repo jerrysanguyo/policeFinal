@@ -184,7 +184,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
-        'Excel' => Maatwebsite\Excel\Facades\Excel::class,    
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,  
         'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
 
     ])->toArray(),
