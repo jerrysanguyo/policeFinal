@@ -22,8 +22,8 @@
     <script src="https://kit.fontawesome.com/4f2d7302b1.js" crossorigin="anonymous"></script>
 
     <!-- Scripts -->
-    <!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
-    <link rel="stylesheet" href="{{ asset('build/assets/app-Co2e8z2G.css') }}">
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <!-- <link rel="stylesheet" href="{{ asset('build/assets/app-Co2e8z2G.css') }}"> -->
     <style>
         .dt-input{
             margin-right: 3%;
@@ -138,6 +138,11 @@
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
+                                    </form>
+
+                                    <form action="{{ route('school-rfid-token') }}">
+                                        @csrf
+                                        <button type="submit" class="btn btn-primary">Go to</button>
                                     </form>
                                 </div>
                             </li>

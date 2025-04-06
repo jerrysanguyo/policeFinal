@@ -14,8 +14,8 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    <!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
-    <link rel="stylesheet" href="/build/assets/app-Co2e8z2G.css">
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <!-- <link rel="stylesheet" href="/build/assets/app-Co2e8z2G.css"> -->
     <style>
         .btn.btn-primary {
             background-color: #727CF5;

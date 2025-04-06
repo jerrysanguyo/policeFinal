@@ -30,6 +30,17 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
 Route::get('/registration', [RegisterController::class, 'index'])->name('registration');
 Route::get('/admin-trainings/{courseId}', [SpecialTrainingController::class, 'getAdminTrainings'])->name('admin.trainings');
+
+Route::get('/SchoolRfid', function () {
+    $user = Auth::user();
+    
+    $token = $user->createToken('school-rfid-token')->plainTextToken;
+    
+    $systemBUrl = 'http://127.0.0.1:8000/auth/verify?token=' . $token;
+
+    return redirect()->away($systemBUrl);
+})->middleware('auth')->name('school-rfid-token');
+
 // superadmin middleware
 Route::middleware(['auth', 'check.user.role'])->prefix('superadmin')->name('superadmin.')->group(function() 
 {
